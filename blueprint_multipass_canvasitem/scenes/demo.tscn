@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/multipass_sprite.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://shaders/pixel_postprocessing.gdshader" type="Shader" id=3]
+[ext_resource path="res://scripts/Camera2D_tracked.gd" type="Script" id=4]
+[ext_resource path="res://spotlight_0.png" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/RECT_SIZE = Vector2( 64, 64 )
+shader_param/RECT_START = Vector2( 474, 268 )
+shader_param/SCREEN_RESOLUTION = null
+shader_param/scale = Vector2( 5, 5 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MultipassSprite" type="Sprite" parent="."]
+position = Vector2( 596.019, 430.647 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+materials = [ SubResource( 1 ) ]
+init_position = Vector2( 506, 300 )
+circle = false
+
+[node name="Camera2DTracked" type="Camera2D" parent="."]
+position = Vector2( 501, 291 )
+script = ExtResource( 4 )
+
+[node name="Camera2DTracked2" type="Camera2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 334, 157 )
+texture = ExtResource( 5 )
