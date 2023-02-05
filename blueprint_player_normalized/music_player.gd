@@ -17,10 +17,10 @@ func _init(): set_autoplay(true)
 # times 10 ( log2(v)*10  on Python )
 const mute_db:float = -80.0
 func get_volume_normalized():
-	var res:float = log(get_volume_db())*10 / log(2)
-	return res if (res!=-INF) else mute_db
+	var vol:float = log(get_volume_db()) / log(2.0)
+	return pow(2.0, vol)
 func set_volume_normalized(volume:float):
-	var vol:float = log(volume)*10 / log(2)
+	var vol:float = log(volume)*10.0 / log(2.0)
 	set_volume_db( vol if (vol!=-INF) else mute_db )
 
 # warning-ignore:unused_signal
