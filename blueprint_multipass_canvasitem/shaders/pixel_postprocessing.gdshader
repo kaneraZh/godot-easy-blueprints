@@ -6,7 +6,6 @@ uniform vec2 SCREEN_RESOLUTION;
 vec2 slice_rect(vec2 start, vec2 size, vec2 uv, vec2 resolution){
 	start= start/resolution;
 	size = size /resolution;
-	vec2 end = start+size;
 	uv = uv*size;
 	while(uv.x>size.x)uv.x-= size.x;
 	while(uv.y>size.y)uv.y-= size.y;

@@ -1,6 +1,6 @@
 tool
 class_name Analog
-extends ButtonBase
+extends InputBase
 
 export (Array, Resource) var thresholds := [] setget set_thresholds, get_thresholds
 func set_thresholds(t:Array):

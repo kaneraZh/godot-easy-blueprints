@@ -45,30 +45,30 @@ var updated_last:String
 const NOTIFICATION_CAMERA_UPDATED:int = 1020
 func _notification(what:int):
 	if(what == NOTIFICATION_CAMERA_UPDATED):
-			call_deferred("update_%s"%updated_last)
-			print("notified!! :p")
+		call_deferred("update_%s"%updated_last)
 
 func get_view_size()->Vector2:
 	return get_texture().get_size()*get_scale()*get_viewport_transform().get_scale()
 const camera_group:String = "camera_d2"
 func get_view_position()->Vector2:
-	var size:Vector2= get_view_size()/2.0
-	var pos:Vector2	= get_position()+get_offset()
+	var size:Vector2	= get_view_size()/2.0
+	var pos:Vector2		= get_position()+get_offset()
+	var viewport:Vector2= get_viewport_transform().get_scale()*get_viewport_rect().size
 	if(get_tree().has_group(camera_group)):
 		var camera:Camera2DTracked = get_tree().get_nodes_in_group(camera_group).front()
 		pos -= camera.get_position()
+		pos -= camera.get_offset()
 		if(camera.get_anchor_mode()):
-			pos+= get_viewport_transform().get_scale()/2
-		size*= camera.get_scale()
-	if(!is_centered()):
-		pos+= get_view_size()/2.0
+			pos+= viewport/2
+	if(!is_centered()):pos+= size
 	return Vector2(	+pos.x-size.x,
-					-pos.y-size.y+get_viewport_rect().size.y)
+					-pos.y-size.y+viewport.y)
 func get_view_rect()->Rect2:
 	return Rect2(get_view_position(), get_view_size())
 func get_view_uv()->Rect2:
-	var size:Vector2 = get_viewport_rect().size
-	return Rect2(get_view_position()/size, get_view_size()/size)
+	var vp:Vector2 = get_viewport_transform().get_scale()*get_viewport_rect().size
+	var pos:Vector2= get_view_position()/vp
+	return Rect2(pos, pos+get_view_size()/vp)
 
 func _enter_tree():
 	if(Engine.is_editor_hint()):return
@@ -106,10 +106,10 @@ func set_position(p:Vector2):
 	position = p
 	update_rects()
 
-const timer:float = 1.0
-var clock:float = 0.1
-var time:float = 0.0
-const sp:float = 1000000.0
+const timer	:float = 1.0
+var clock	:float = 0.0
+var time	:float = 0.0
+const sp	:float = 1000000.0
 export var init_position:Vector2
 export var circle:bool = true setget set_circle
 func set_circle(b:bool):
@@ -117,11 +117,17 @@ func set_circle(b:bool):
 	if(b):init_position = get_position()
 	notification(EditorSettings.NOTIFICATION_EDITOR_SETTINGS_CHANGED)
 func _process(delta):
-	if(circle):
-		var p := Time.get_ticks_usec()/sp
-		set_position( init_position+Vector2(cos(p),sin(p)*3.0)*100.0 )
-	clock-= delta
-	if(clock < 0.0 && !Engine.is_editor_hint()):
-		clock = timer
-		
-#		print('cam trans: %s'%get_viewport().get_camera().get_camera_transform())
+#	if(circle):
+#		var p := Time.get_ticks_usec()/sp
+#		set_position( init_position+Vector2(cos(p),sin(p)*3.0)*100.0 )
+	clock+= delta
+	if(clock > timer && !Engine.is_editor_hint()):
+		clock = 0.0
+		if(get_tree().has_group(camera_group)):
+			var _camera:Camera2DTracked = get_tree().get_nodes_in_group(camera_group).front()
+#			print('self: %s'%(get_position()+get_offset()))
+#			print('cam:  %s'%camera.get_position())
+#			print('total:%s'%get_view_position())
+			print("vp size: %s"%[get_viewport_transform().get_scale()*get_viewport_rect().size])
+			print("vp tran: %s"%get_viewport_transform().get_scale())
+			print("vp rect: %s"%get_viewport_rect().size)

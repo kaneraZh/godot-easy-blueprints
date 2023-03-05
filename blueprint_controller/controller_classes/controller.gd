@@ -7,7 +7,7 @@ func set_buttons(bts:Array):	buttons = bts
 func get_buttons()->Array:		return buttons
 func button_name(n:String):
 	for b in buttons:
-		if(b is ButtonBase):if(b.get_action() == n	): return b
+		if(b is InputBase):if(b.get_action() == n	): return b
 		else:				if(b.name == n			): return b
 	push_warning("Error: name <%s> not found"%n)
 	print_debug( "Error: name <%s> not found"%n)
@@ -18,8 +18,11 @@ func button_id(id:int):
 export (int, FLAGS,
 	"processes buttons"
 	)var settings = 0b1
-func set_active(a:int): settings = (a&1)<<0
-func get_active()->int: return (settings>>0)&1
+func set_active(a:int):
+	settings&= ~(settings&(1<<0))
+	settings+= (a&1)<<0
+func get_active()->int:
+	return (settings>>0)&1
 
 func _enter_tree():
 	if(Engine.is_editor_hint()):_enter_tree_editor()

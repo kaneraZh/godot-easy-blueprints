@@ -1,6 +1,6 @@
 tool
 class_name Binary
-extends ButtonBase
+extends InputBase
 
 export (int, FLAGS,
 	"OnPress",

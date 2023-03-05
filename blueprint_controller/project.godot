@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "ButtonBase",
+"base": "InputBase",
 "class": "Analog",
 "language": "GDScript",
 "path": "res://controller_classes/analog/analog.gd"
@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://controller_classes/analog/analog2d.gd"
 }, {
-"base": "ButtonBase",
+"base": "InputBase",
 "class": "Binary",
 "language": "GDScript",
 "path": "res://controller_classes/binary/binary.gd"
@@ -39,15 +39,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://controller_classes/binary/binary2d.gd"
 }, {
-"base": "X509Certificate",
-"class": "ButtonBase",
-"language": "GDScript",
-"path": "res://controller_classes/buttonBase.gd"
-}, {
 "base": "Node",
 "class": "Controller",
 "language": "GDScript",
 "path": "res://controller_classes/controller.gd"
+}, {
+"base": "X509Certificate",
+"class": "InputBase",
+"language": "GDScript",
+"path": "res://controller_classes/inputBase.gd"
 }, {
 "base": "Resource",
 "class": "threshold",
@@ -71,8 +71,8 @@ _global_script_class_icons={
 "Binary": "",
 "Binary1D": "",
 "Binary2D": "",
-"ButtonBase": "",
 "Controller": "",
+"InputBase": "",
 "threshold": "",
 "threshold_abs": "",
 "threshold_normal": ""

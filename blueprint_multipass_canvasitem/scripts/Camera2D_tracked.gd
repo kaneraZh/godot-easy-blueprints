@@ -11,4 +11,12 @@ func set_current(c:bool):
 	_set_current(c)
 	if(c):
 		add_to_group(camera_group)
-		get_tree().get_current_scene().propagate_notification(NOTIFICATION_CAMERA_UPDATED)
+		if( get_tree() ):	get_tree().get_current_scene().propagate_notification(NOTIFICATION_CAMERA_UPDATED)
+		else:				connect("tree_entered", self, "set_current", [c], CONNECT_ONESHOT)
+
+#func get_position_absolute()->Vector2:
+#	var res:Vector2 = Vector2()
+#	res += get_position()
+#	res += get_offset()
+##	res += get_
+#	return res
