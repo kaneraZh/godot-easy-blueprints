@@ -12,7 +12,7 @@ void vertex(){
 	}
 }
 
-uniform vec4 color		: hint_color;
+uniform vec4 color		: source_color;
 uniform float fade_start: hint_range(0.0, 1.0, 0.02);
 uniform float fade_end	: hint_range(0.0, 1.0, 0.02);
 void fragment(){

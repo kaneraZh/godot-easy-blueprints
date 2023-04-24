@@ -1,8 +1,8 @@
-tool
+@tool
 class_name Controller
 extends Node
 
-export (Array, X509Certificate) var buttons setget set_buttons, get_buttons
+@export (Array, X509Certificate) var buttons : get = get_buttons, set = set_buttons
 func set_buttons(bts:Array):	buttons = bts
 func get_buttons()->Array:		return buttons
 func button_name(n:String):
@@ -12,10 +12,10 @@ func button_name(n:String):
 	push_warning("Error: name <%s> not found"%n)
 	print_debug( "Error: name <%s> not found"%n)
 func button_id(id:int):
-	assert(id<buttons.size() && id>=0, "wrong button id solicited <%s>"%id)
+	assert(id<buttons.size() && id>=0) #,"wrong button id solicited <%s>"%id)
 	return buttons[id]
 
-export (int, FLAGS,
+@export (int, FLAGS,
 	"processes buttons"
 	)var settings = 0b1
 func set_active(a:int):

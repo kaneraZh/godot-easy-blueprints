@@ -1,5 +1,5 @@
 class_name threshold_abs extends threshold
-export (float, 0.0, 1.0) var value := 0.0
+@export (float, 0.0, 1.0) var value := 0.0
 func test(val:float)->int:
 # warning-ignore:narrowing_conversion
 	var res:int = clamp(sign(val-value), -get_onBelow(), get_onAbove()) * get_active()

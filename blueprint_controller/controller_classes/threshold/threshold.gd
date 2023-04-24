@@ -1,5 +1,5 @@
 class_name threshold extends Resource
-export (int, FLAGS,
+@export (int, FLAGS,
 	"active",
 	"onAbove",
 	"onBelow"

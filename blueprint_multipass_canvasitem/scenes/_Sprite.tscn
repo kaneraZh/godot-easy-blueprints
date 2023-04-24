@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture2D" id=1]
 [ext_resource path="res://scripts/multipass_sprite.gd" type="Script" id=2]
 [ext_resource path="res://shaders/pixel_postprocessing.gdshader" type="Shader" id=3]
 
@@ -11,7 +11,7 @@ shader_param/RECT_START = Vector2( 608.315, 120.348 )
 shader_param/RECT_END = Vector2( 633.714, 145.746 )
 shader_param/SCREEN_RESOLUTION = null
 
-[node name="Sprite" type="Sprite"]
+[node name="Sprite2D" type="Sprite2D"]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 circle = false
@@ -19,6 +19,6 @@ circle = false
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
 rect = Rect2( 54.8171, 518.373, 38.0547, 38.0547 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource( 2 )
 texture = ExtResource( 1 )

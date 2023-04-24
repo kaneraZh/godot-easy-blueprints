@@ -1,75 +1,75 @@
 [gd_resource type="TileSet" load_steps=17 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://icon - copia.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture2D" id=1]
+[ext_resource path="res://icon - copia.png" type="Texture2D" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+points = PackedVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="NavigationPolygon" id=15]
-vertices = PoolVector2Array( 64, 64, 32, 64, 32, 32, 64, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 64, 64, 32, 64, 32, 32, 64, 32 ) ]
+vertices = PackedVector2Array( 64, 64, 32, 64, 32, 32, 64, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 64, 64, 32, 64, 32, 32, 64, 32 ) ]
 
 [sub_resource type="NavigationPolygon" id=16]
-vertices = PoolVector2Array( 64, 64, 32, 64, 32, 0, 64, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 64, 64, 32, 64, 32, 0, 64, 0 ) ]
+vertices = PackedVector2Array( 64, 64, 32, 64, 32, 0, 64, 0 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 64, 64, 32, 64, 32, 0, 64, 0 ) ]
 
 [sub_resource type="NavigationPolygon" id=17]
-vertices = PoolVector2Array( 64, 32, 32, 32, 32, 0, 64, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 64, 32, 32, 32, 32, 0, 64, 0 ) ]
+vertices = PackedVector2Array( 64, 32, 32, 32, 32, 0, 64, 0 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 64, 32, 32, 32, 32, 0, 64, 0 ) ]
 
 [sub_resource type="NavigationPolygon" id=18]
-vertices = PoolVector2Array( 64, 64, 0, 64, 0, 32, 64, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 64, 64, 0, 64, 0, 32, 64, 32 ) ]
+vertices = PackedVector2Array( 64, 64, 0, 64, 0, 32, 64, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 64, 64, 0, 64, 0, 32, 64, 32 ) ]
 
 [sub_resource type="NavigationPolygon" id=6]
-vertices = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 ) ]
+vertices = PackedVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 ) ]
 
 [sub_resource type="NavigationPolygon" id=19]
-vertices = PoolVector2Array( 64, 32, 0, 32, 0, 0, 64, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 64, 32, 0, 32, 0, 0, 64, 0 ) ]
+vertices = PackedVector2Array( 64, 32, 0, 32, 0, 0, 64, 0 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 64, 32, 0, 32, 0, 0, 64, 0 ) ]
 
 [sub_resource type="NavigationPolygon" id=20]
-vertices = PoolVector2Array( 32, 64, 0, 64, 0, 32, 32, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 32, 64, 0, 64, 0, 32, 32, 32 ) ]
+vertices = PackedVector2Array( 32, 64, 0, 64, 0, 32, 32, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 32, 64, 0, 64, 0, 32, 32, 32 ) ]
 
 [sub_resource type="NavigationPolygon" id=21]
-vertices = PoolVector2Array( 32, 64, 0, 64, 0, 0, 32, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 32, 64, 0, 64, 0, 0, 32, 0 ) ]
+vertices = PackedVector2Array( 32, 64, 0, 64, 0, 0, 32, 0 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 32, 64, 0, 64, 0, 0, 32, 0 ) ]
 
 [sub_resource type="NavigationPolygon" id=22]
-vertices = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 ) ]
+vertices = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 ) ]
 
 [sub_resource type="NavigationPolygon" id=11]
-vertices = PoolVector2Array( 0, 0, 64, 0, 64, 32, 32, 32, 0, 64, 32, 64 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 0, 3, 5 ) ]
-outlines = [ PoolVector2Array( 64, 0, 64, 32, 32, 32, 32, 64, 0, 64, 0, 0 ) ]
+vertices = PackedVector2Array( 0, 0, 64, 0, 64, 32, 32, 32, 0, 64, 32, 64 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ), PackedInt32Array( 4, 0, 3, 5 ) ]
+outlines = [ PackedVector2Array( 64, 0, 64, 32, 32, 32, 32, 64, 0, 64, 0, 0 ) ]
 
 [sub_resource type="NavigationPolygon" id=12]
-vertices = PoolVector2Array( 0, 64, 0, 0, 32, 0, 32, 32, 64, 64, 64, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 0, 3, 5 ) ]
-outlines = [ PoolVector2Array( 0, 0, 32, 0, 32, 32, 64, 32, 64, 64, 0, 64 ) ]
+vertices = PackedVector2Array( 0, 64, 0, 0, 32, 0, 32, 32, 64, 64, 64, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ), PackedInt32Array( 4, 0, 3, 5 ) ]
+outlines = [ PackedVector2Array( 0, 0, 32, 0, 32, 32, 64, 32, 64, 64, 0, 64 ) ]
 
 [sub_resource type="NavigationPolygon" id=13]
-vertices = PoolVector2Array( 0, 32, 0, 0, 64, 0, 32, 32, 64, 64, 32, 64 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4, 5 ) ]
-outlines = [ PoolVector2Array( 0, 32, 32, 32, 32, 64, 64, 64, 64, 0, 0, 0 ) ]
+vertices = PackedVector2Array( 0, 32, 0, 0, 64, 0, 32, 32, 64, 64, 32, 64 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ), PackedInt32Array( 3, 2, 4, 5 ) ]
+outlines = [ PackedVector2Array( 0, 32, 32, 32, 32, 64, 64, 64, 64, 0, 0, 0 ) ]
 
 [sub_resource type="NavigationPolygon" id=14]
-vertices = PoolVector2Array( 32, 32, 32, 0, 64, 0, 64, 64, 0, 64, 0, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4, 5 ) ]
-outlines = [ PoolVector2Array( 0, 32, 0, 64, 64, 64, 64, 0, 32, 0, 32, 32 ) ]
+vertices = PackedVector2Array( 32, 32, 32, 0, 64, 0, 64, 64, 0, 64, 0, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ), PackedInt32Array( 0, 3, 4, 5 ) ]
+outlines = [ PackedVector2Array( 0, 32, 0, 64, 64, 64, 64, 0, 32, 0, 32, 32 ) ]
 
 [resource]
 0/name = "icon.png 0"

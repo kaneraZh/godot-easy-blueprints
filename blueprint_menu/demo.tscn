@@ -25,31 +25,31 @@ anchor_bottom = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
-margin_right = 93.0
-margin_bottom = 600.0
-custom_constants/separation = 0
+offset_right = 93.0
+offset_bottom = 600.0
+theme_override_constants/separation = 0
 script = ExtResource( 3 )
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
 material = SubResource( 3 )
-margin_right = 93.0
-margin_bottom = 28.0
+offset_right = 93.0
+offset_bottom = 28.0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 86.0
-margin_bottom = 21.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 86.0
+offset_bottom = 21.0
 text = "MAIN MENU"
 
 [node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 material = ExtResource( 2 )
-margin_top = 28.0
-margin_right = 93.0
-margin_bottom = 48.0
+offset_top = 28.0
+offset_right = 93.0
+offset_bottom = 48.0
 theme = SubResource( 10 )
 text = "1"
 align = 0
@@ -60,9 +60,9 @@ unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 material = ExtResource( 2 )
-margin_top = 48.0
-margin_right = 93.0
-margin_bottom = 68.0
+offset_top = 48.0
+offset_right = 93.0
+offset_bottom = 68.0
 text = "2"
 align = 0
 script = ExtResource( 4 )
@@ -72,9 +72,9 @@ unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade2" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 material = ExtResource( 2 )
-margin_top = 68.0
-margin_right = 93.0
-margin_bottom = 88.0
+offset_top = 68.0
+offset_right = 93.0
+offset_bottom = 88.0
 text = "3"
 align = 0
 script = ExtResource( 4 )
@@ -84,9 +84,9 @@ unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade3" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 material = ExtResource( 2 )
-margin_top = 88.0
-margin_right = 93.0
-margin_bottom = 108.0
+offset_top = 88.0
+offset_right = 93.0
+offset_bottom = 108.0
 text = "4"
 align = 0
 script = ExtResource( 4 )
@@ -96,9 +96,9 @@ unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade4" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 material = ExtResource( 2 )
-margin_top = 108.0
-margin_right = 93.0
-margin_bottom = 128.0
+offset_top = 108.0
+offset_right = 93.0
+offset_bottom = 128.0
 text = "5"
 align = 0
 script = ExtResource( 4 )
@@ -108,9 +108,9 @@ unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade5" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 material = ExtResource( 2 )
-margin_top = 128.0
-margin_right = 93.0
-margin_bottom = 148.0
+offset_top = 128.0
+offset_right = 93.0
+offset_bottom = 148.0
 text = "6"
 align = 0
 script = ExtResource( 4 )

@@ -1,8 +1,8 @@
-tool
+@tool
 class_name Binary
 extends InputBase
 
-export (int, FLAGS,
+@export (int, FLAGS,
 	"OnPress",
 	"OnRelease"
 ) var signals = 0b00

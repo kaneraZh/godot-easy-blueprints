@@ -1,11 +1,11 @@
-tool
+@tool
 class_name MultipassSprite
-extends Sprite
-export (Array, Material) var materials setget set_materials
+extends Sprite2D
+@export (Array, Material) var materials : set = set_materials
 func set_materials(m:Array):
 	for mat in m:
-		if(	mat is ParticlesMaterial||
-			mat is SpatialMaterial	):
+		if(	mat is ParticleProcessMaterial||
+			mat is StandardMaterial3D	):
 				mat = null
 	materials = m
 
@@ -17,16 +17,16 @@ var sprites:Array = []
 func update_sprites_rect(rect:Rect2	= get_view_rect()):
 	for s in sprites:
 		var mat:Material = s.get_material()
-		mat.set_shader_param("RECT_START",	rect.position)
-		mat.set_shader_param("RECT_SIZE",	rect.size)
-		mat.set_shader_param("RECT_END",	rect.end)
-		mat.set_shader_param("SCREEN_RESOLUTION", get_viewport_rect().size)
+		mat.set_shader_parameter("RECT_START",	rect.position)
+		mat.set_shader_parameter("RECT_SIZE",	rect.size)
+		mat.set_shader_parameter("RECT_END",	rect.end)
+		mat.set_shader_parameter("SCREEN_RESOLUTION", get_viewport_rect().size)
 func update_sprites_uv(rect:Rect2	= get_view_uv()):
 	for s in sprites:
 		var mat:Material = s.get_material()
-		mat.set_shader_param("UV_START",rect.position)
-		mat.set_shader_param("UV_SIZE",	rect.size)
-		mat.set_shader_param("UV_END",	rect.end)
+		mat.set_shader_parameter("UV_START",rect.position)
+		mat.set_shader_parameter("UV_SIZE",	rect.size)
+		mat.set_shader_parameter("UV_END",	rect.end)
 
 func update_rects():
 	var rect:Rect2 = get_view_rect()
@@ -76,7 +76,7 @@ func _enter_tree():
 	bbc.set_copy_mode(BackBufferCopy.COPY_MODE_RECT)
 	for m in materials:
 		var b:BackBufferCopy= bbc.duplicate(BackBufferCopy.DUPLICATE_USE_INSTANCING)
-		var s:Sprite		= Sprite.new()
+		var s:Sprite2D		= Sprite2D.new()
 		s.set_texture(texture)
 		s.set_material(m)
 		s.set_light_mask(0)
@@ -89,7 +89,7 @@ func _enter_tree():
 	set_centered(is_centered())
 	set_position(get_position())
 
-func set_texture(t:Texture):
+func set_texture(t:Texture2D):
 	texture = t
 	update_rects()
 func set_offset(o:Vector2):
@@ -110,8 +110,8 @@ const timer	:float = 1.0
 var clock	:float = 0.0
 var time	:float = 0.0
 const sp	:float = 1000000.0
-export var init_position:Vector2
-export var circle:bool = true setget set_circle
+@export var init_position:Vector2
+@export var circle:bool = true: set = set_circle
 func set_circle(b:bool):
 	circle = b
 	if(b):init_position = get_position()

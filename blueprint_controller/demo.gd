@@ -4,7 +4,7 @@ var con:Controller
 func _ready():
 	con		= $Controller
 	pause	= con.button_id(CONT.PAUSE)
-	pause.connect("just_pressed", self, "pause")
+	pause.connect("just_pressed", Callable(self, "pause"))
 	stick	= con.button_id(CONT.STICK)
 	pad		= con.button_id(CONT.PAD)
 	
@@ -24,7 +24,7 @@ func _process(_delta):
 
 #var s:Vector2
 #var p:Vector2
-onready var screen := OS.window_size
-onready var center := screen/2
+@onready var screen := get_window().size
+@onready var center := screen/2
 func draw():
-	draw_rect(Rect2(center+pad.press(), stick.press().abs() ),Color.aquamarine)
+	draw_rect(Rect2(center+pad.press(), stick.press().abs() ),Color.AQUAMARINE)

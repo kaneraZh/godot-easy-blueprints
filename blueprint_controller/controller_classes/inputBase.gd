@@ -1,9 +1,9 @@
-tool
+@tool
 class_name InputBase
 extends X509Certificate
 
-export var action : String	setget set_action, get_action
-export var active := true	setget set_active
+@export var action : String: get = get_action, set = set_action
+@export var active := true: set = set_active
 func set_active(a:bool):
 	active = a
 	set_setting(0,a)
@@ -12,7 +12,7 @@ func get_active()->int:
 
 func set_action(act:String):
 	if(!Engine.is_editor_hint()):
-		assert(InputMap.has_action(act), "Action <"+act+"> isnt set, remember to set action in editor!")
+		assert(InputMap.has_action(act)) #,"Action <"+act+"> isnt set, remember to set action in editor!")
 	action = act
 func get_action()->String:
 	return action

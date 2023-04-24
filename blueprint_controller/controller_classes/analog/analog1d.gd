@@ -1,27 +1,27 @@
-tool
+@tool
 class_name Analog1D
 extends X509Certificate
 
-export var name:= ""
+@export var name:= ""
 
-export var positive : X509Certificate setget set_positive, get_positive
+@export var positive : X509Certificate: get = get_positive, set = set_positive
 func set_positive(p:X509Certificate):
 	if!(p is Analog): p = Analog.new()
 	positive = p
 # warning-ignore:return_value_discarded
-	positive.connect("just_above", self, "emit_signal", ["just_above"])
+	positive.connect("just_above", Callable(self, "emit_signal").bind("just_above"))
 # warning-ignore:return_value_discarded
-	positive.connect("just_below", self, "emit_signal", ["just_below"])
+	positive.connect("just_below", Callable(self, "emit_signal").bind("just_below"))
 	positive.get_thresholds().append_array(thresholds)
 func get_positive()->X509Certificate: return positive
-export var negative : X509Certificate setget set_negative
+@export var negative : X509Certificate: set = set_negative
 func set_negative(n:X509Certificate):
 	if!(n is Analog): n = Analog.new()
 	negative = n
 # warning-ignore:return_value_discarded
-	negative.connect("just_above", self, "emit_signal", ["just_below"])
+	negative.connect("just_above", Callable(self, "emit_signal").bind("just_below"))
 # warning-ignore:return_value_discarded
-	negative.connect("just_below", self, "emit_signal", ["just_above"])
+	negative.connect("just_below", Callable(self, "emit_signal").bind("just_above"))
 	negative.get_thresholds().append_array(thresholds)
 func get_negative()->X509Certificate: return negative
 # warning-ignore:unused_signal
@@ -29,13 +29,13 @@ signal just_above
 # warning-ignore:unused_signal
 signal just_below
 
-export (Array, Resource) var thresholds:= [] setget set_thresholds
+@export (Array, Resource) var thresholds:= []: set = set_thresholds
 func set_thresholds(t:Array):
 	for i in t.size():
 		if!(t[i] is threshold_abs): t[i] = threshold_abs.new()
 	thresholds = t
 
-export (int, FLAGS,
+@export (int, FLAGS,
 	"active",
 	"flip",
 	"mode(add/prior)",

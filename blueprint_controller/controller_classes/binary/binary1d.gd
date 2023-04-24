@@ -1,37 +1,37 @@
-tool
+@tool
 class_name Binary1D
 extends X509Certificate
 
-export var name:= ""
+@export var name:= ""
 
-export var positive:X509Certificate setget set_positive, get_positive
+@export var positive:X509Certificate: get = get_positive, set = set_positive
 func set_positive(pos:X509Certificate):
 	if!(pos is Binary):
 		pos = Binary.new()
 	positive = pos
 	positive.setup(get_onRelease(),get_onPress(),get_active())
 # warning-ignore:return_value_discarded
-	positive.connect("just_pressed", self, "emit_signal", ["just_pressed"])
+	positive.connect("just_pressed", Callable(self, "emit_signal").bind("just_pressed"))
 # warning-ignore:return_value_discarded
-	positive.connect("just_released", self, "emit_signal", ["just_released"])
+	positive.connect("just_released", Callable(self, "emit_signal").bind("just_released"))
 func get_positive()->X509Certificate: return positive
-export var negative:X509Certificate setget set_negative, get_negative
+@export var negative:X509Certificate: get = get_negative, set = set_negative
 func set_negative(neg:X509Certificate):
 	if!(neg is Binary):
 		neg = Binary.new()
 	negative = neg
 	negative.setup(get_onRelease(),get_onPress(),get_active())
 # warning-ignore:return_value_discarded
-	negative.connect("just_pressed", self, "emit_signal", ["just_pressed"])
+	negative.connect("just_pressed", Callable(self, "emit_signal").bind("just_pressed"))
 # warning-ignore:return_value_discarded
-	negative.connect("just_released", self, "emit_signal", ["just_released"])
+	negative.connect("just_released", Callable(self, "emit_signal").bind("just_released"))
 func get_negative()->X509Certificate: return negative
 # warning-ignore:unused_signal
 signal just_released
 # warning-ignore:unused_signal
 signal just_pressed
 
-export (int, FLAGS,
+@export (int, FLAGS,
 	"active",
 	"flip",
 	"mode(add/prior)",
@@ -55,7 +55,7 @@ func set_settings(
 		set_axis(	int(axis))
 		set_active(	int(active))
 
-export (int, FLAGS,
+@export (int, FLAGS,
 	"onRelease",
 	"onPress"
 ) var signals	:= 0
