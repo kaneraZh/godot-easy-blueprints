@@ -1,30 +1,36 @@
 extends Node2D
-enum CONT{PAD, STICK, PAUSE}
+
 var con:Controller
 func _ready():
-	con		= $Controller
-	pause	= con.button_id(CONT.PAUSE)
-	pause.connect("just_pressed", Callable(self, "pause"))
-	stick	= con.button_id(CONT.STICK)
-	pad		= con.button_id(CONT.PAD)
-	
+	set_controller($Controller)
+	pause.connect("just_pressed", Callable(self, "on_pause_press"))
+	pause.connect("just_released",Callable(self, "on_pause_release"))
 
-var pause:Binary
-func pause():
-	print("paused!")
-var stick:Analog2D
-var pad:Binary2D
+@export var pause:Binary
+func on_pause_press():print("paused!")
+func on_pause_release():print("unpaused!")
+@export var stick:Analog2D
+@export var pad:Binary2D
+var controller:Controller : set=set_controller
+func set_controller(c:Controller):
+	controller = c
+	controller.add_button(pause)
+	controller.add_group(stick)
+	controller.add_group(pad)
+#var timer:float		= 1.0
+#const tracker:float	= 0.2
 func _process(_delta):
-#	s = stick.press()
-#	p = pad.press()
-#	print("")
-#	print(s)
-#	print(p)
-	update()
+#	timer+= _delta
+#	if(timer>=tracker):
+#		timer-=tracker
+#		print("pad: %10s, stick: %10s"%[pad.press(),stick.press()])
+	queue_redraw()
 
-#var s:Vector2
-#var p:Vector2
-@onready var screen := get_window().size
-@onready var center := screen/2
-func draw():
-	draw_rect(Rect2(center+pad.press(), stick.press().abs() ),Color.AQUAMARINE)
+@onready var center:Vector2		= Vector2(get_window().size/2)
+@onready var pos_pad:Vector2	= Vector2(center.x/2, center.y)
+@onready var pos_stick:Vector2	= Vector2(center.x/2+center.x, center.y)
+func _draw():
+	draw_circle(pos_pad,5,Color.SPRING_GREEN)
+	draw_circle(pos_pad+(pad.press()*100),5,Color.TOMATO)
+	draw_circle(pos_stick,5,Color.SPRING_GREEN)
+	draw_circle(pos_stick+(stick.press()*100),5,Color.TOMATO)

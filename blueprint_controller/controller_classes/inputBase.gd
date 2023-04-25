@@ -1,12 +1,12 @@
 @tool
 class_name InputBase
-extends X509Certificate
+extends Resource
 
 @export var action : String: get = get_action, set = set_action
 @export var active := true: set = set_active
 func set_active(a:bool):
 	active = a
-	set_setting(0,a)
+#	set_setting(0,a)
 func get_active()->int:
 	return get_setting(0)
 
@@ -23,4 +23,4 @@ func get_setting(setting:int)->int:
 func set_setting(setting:int,flag:bool):
 	settings&= ~(1<<setting)
 	settings+= int(flag)<<setting
-func _inita():pass
+#func _inita():pass

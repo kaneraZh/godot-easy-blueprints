@@ -1,127 +1,132 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=24 format=3 uid="uid://c5smsjg2sds20"]
 
-[ext_resource path="res://demo.gd" type="Script" id=1]
-[ext_resource path="res://controller_classes/controller.gd" type="Script" id=2]
-[ext_resource path="res://controller_classes/analog/analog1d.gd" type="Script" id=3]
-[ext_resource path="res://controller_classes/binary/binary2d.gd" type="Script" id=4]
-[ext_resource path="res://controller_classes/analog/analog.gd" type="Script" id=5]
-[ext_resource path="res://controller_classes/binary/binary1d.gd" type="Script" id=6]
-[ext_resource path="res://controller_classes/binary/binary.gd" type="Script" id=7]
-[ext_resource path="res://controller_classes/analog/analog2d.gd" type="Script" id=9]
+[ext_resource type="Script" path="res://demo.gd" id="1"]
+[ext_resource type="Script" path="res://controller_classes/controller.gd" id="2"]
+[ext_resource type="Script" path="res://controller_classes/binary/binary.gd" id="2_g8i88"]
+[ext_resource type="Script" path="res://controller_classes/analog/analog2d.gd" id="3_dnq7u"]
+[ext_resource type="Script" path="res://controller_classes/binary/binary2d.gd" id="4_1uqqn"]
+[ext_resource type="Script" path="res://controller_classes/binary/binary1d.gd" id="4_lo6uk"]
+[ext_resource type="Script" path="res://controller_classes/analog/analog.gd" id="4_wjiro"]
+[ext_resource type="Script" path="res://controller_classes/analog/analog1d.gd" id="5_x24j0"]
 
-[sub_resource type="X509Certificate" id=9]
-script = ExtResource( 7 )
-action = "l"
-active = true
-signals = 1
+[sub_resource type="Resource" id="Resource_h2867"]
+script = ExtResource("2_g8i88")
+signals = 3
+action = &"menu"
+active = 1
 
-[sub_resource type="X509Certificate" id=10]
-script = ExtResource( 7 )
-action = "r"
-active = true
-signals = 1
+[sub_resource type="Resource" id="Resource_cxxvv"]
+script = ExtResource("4_wjiro")
+thresholds = Array[Resource("res://controller_classes/threshold/threshold_abs.gd")]([])
+deadzone_in = 0.0
+deadzone_out = 1.0
+action = &"aleft"
+active = 1
 
-[sub_resource type="X509Certificate" id=1]
-script = ExtResource( 6 )
-name = "x"
-positive = SubResource( 10 )
-negative = SubResource( 9 )
-settings = 5
+[sub_resource type="Resource" id="Resource_2fu3f"]
+script = ExtResource("4_wjiro")
+thresholds = Array[Resource("res://controller_classes/threshold/threshold_abs.gd")]([])
+deadzone_in = 0.0
+deadzone_out = 1.0
+action = &"aright"
+active = 1
+
+[sub_resource type="Resource" id="Resource_hoi1o"]
+script = ExtResource("5_x24j0")
+positive = SubResource("Resource_2fu3f")
+negative = SubResource("Resource_cxxvv")
+thresholds = Array[Resource("res://controller_classes/threshold/threshold_abs.gd")]([])
+settings = 0
+name = &""
+active = 1
+
+[sub_resource type="Resource" id="Resource_yeik8"]
+script = ExtResource("4_wjiro")
+thresholds = Array[Resource("res://controller_classes/threshold/threshold_abs.gd")]([])
+deadzone_in = 0.0
+deadzone_out = 1.0
+action = &"aup"
+active = 1
+
+[sub_resource type="Resource" id="Resource_liii2"]
+script = ExtResource("4_wjiro")
+thresholds = Array[Resource("res://controller_classes/threshold/threshold_abs.gd")]([])
+deadzone_in = 0.0
+deadzone_out = 1.0
+action = &"adown"
+active = 1
+
+[sub_resource type="Resource" id="Resource_70bbr"]
+script = ExtResource("5_x24j0")
+positive = SubResource("Resource_liii2")
+negative = SubResource("Resource_yeik8")
+thresholds = Array[Resource("res://controller_classes/threshold/threshold_abs.gd")]([])
+settings = 0
+name = &""
+active = 1
+
+[sub_resource type="Resource" id="Resource_slrbs"]
+script = ExtResource("3_dnq7u")
+xAxis = SubResource("Resource_hoi1o")
+yAxis = SubResource("Resource_70bbr")
+thresholds = Array[Resource("res://controller_classes/threshold/threshold_abs.gd")]([])
+name = &"stick"
+active = 1
+
+[sub_resource type="Resource" id="Resource_boox5"]
+script = ExtResource("2_g8i88")
 signals = 0
+action = &"left"
+active = 1
 
-[sub_resource type="X509Certificate" id=11]
-script = ExtResource( 7 )
-action = "u"
-active = true
-signals = 1
-
-[sub_resource type="X509Certificate" id=12]
-script = ExtResource( 7 )
-action = "d"
-active = true
-signals = 1
-
-[sub_resource type="X509Certificate" id=2]
-script = ExtResource( 6 )
-name = "y"
-positive = SubResource( 12 )
-negative = SubResource( 11 )
-settings = 5
+[sub_resource type="Resource" id="Resource_81bqv"]
+script = ExtResource("2_g8i88")
 signals = 0
+action = &"right"
+active = 1
 
-[sub_resource type="X509Certificate" id=3]
-script = ExtResource( 4 )
-name = "dpad"
-xAxis = SubResource( 1 )
-yAxis = SubResource( 2 )
-settings = 1
+[sub_resource type="Resource" id="Resource_0ixks"]
+script = ExtResource("4_lo6uk")
+positive = SubResource("Resource_81bqv")
+negative = SubResource("Resource_boox5")
+settings = 0
+signals = 0
+name = &""
+active = 1
 
-[sub_resource type="X509Certificate" id=15]
-script = ExtResource( 5 )
-action = "ui_left"
-active = true
-thresholds = [  ]
-deadzoneIn = 0.0
-deadzoneOut = 1.0
+[sub_resource type="Resource" id="Resource_3ryc3"]
+script = ExtResource("2_g8i88")
+signals = 0
+action = &"up"
+active = 1
 
-[sub_resource type="X509Certificate" id=13]
-script = ExtResource( 5 )
-action = "ui_right"
-active = true
-thresholds = [  ]
-deadzoneIn = 0.0
-deadzoneOut = 1.0
+[sub_resource type="Resource" id="Resource_2vtig"]
+script = ExtResource("2_g8i88")
+signals = 0
+action = &"down"
+active = 1
 
-[sub_resource type="X509Certificate" id=4]
-script = ExtResource( 3 )
-name = "x"
-positive = SubResource( 13 )
-negative = SubResource( 15 )
-thresholds = [  ]
-settings = 5
+[sub_resource type="Resource" id="Resource_o4kkg"]
+script = ExtResource("4_lo6uk")
+positive = SubResource("Resource_2vtig")
+negative = SubResource("Resource_3ryc3")
+settings = 0
+signals = 0
+name = &""
+active = 1
 
-[sub_resource type="X509Certificate" id=16]
-script = ExtResource( 5 )
-action = "ui_up"
-active = true
-thresholds = [  ]
-deadzoneIn = 0.0
-deadzoneOut = 1.0
-
-[sub_resource type="X509Certificate" id=14]
-script = ExtResource( 5 )
-action = "ui_down"
-active = true
-thresholds = [  ]
-deadzoneIn = 0.0
-deadzoneOut = 1.0
-
-[sub_resource type="X509Certificate" id=6]
-script = ExtResource( 3 )
-name = "y"
-positive = SubResource( 14 )
-negative = SubResource( 16 )
-thresholds = [  ]
-settings = 5
-
-[sub_resource type="X509Certificate" id=5]
-script = ExtResource( 9 )
-name = "stick"
-xAxis = SubResource( 4 )
-yAxis = SubResource( 6 )
-thresholds = [  ]
-settings = 1
-
-[sub_resource type="X509Certificate" id=7]
-script = ExtResource( 7 )
-action = "ui_home"
-active = true
-signals = 1
+[sub_resource type="Resource" id="Resource_adytd"]
+script = ExtResource("4_1uqqn")
+xAxis = SubResource("Resource_0ixks")
+yAxis = SubResource("Resource_o4kkg")
+name = &"pad"
+active = 1
 
 [node name="demo" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
+pause = SubResource("Resource_h2867")
+stick = SubResource("Resource_slrbs")
+pad = SubResource("Resource_adytd")
 
 [node name="Controller" type="Node" parent="."]
-script = ExtResource( 2 )
-buttons = [ SubResource( 3 ), SubResource( 5 ), SubResource( 7 ) ]
-settings = 0
+script = ExtResource("2")

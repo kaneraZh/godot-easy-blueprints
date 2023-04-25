@@ -1,8 +1,9 @@
-class_name threshold extends Resource
-@export (int, FLAGS,
-	"active",
-	"onAbove",
-	"onBelow"
+extends Resource
+class_name Threshold
+@export_flags(
+"active",
+"onAbove",
+"onBelow"
 	) var settings := 0b001
 func set_active(f:int):	settings = (settings&(~(1<<0)))+((f&1)<<0)
 func set_onAbove(f:int):settings = (settings&(~(1<<1)))+((f&1)<<1)

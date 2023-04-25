@@ -1,0 +1,8 @@
+res://default_env.tres
+res://demo.tscn
+res://controller_classes/controller.gd
+res://demo.gd
+res://controller_classes/binary/binary.gd
+res://controller_classes/analog/analog1d.gd
+res://controller_classes/analog/analog.gd
+res://controller_classes/binary/binary1d.gd
