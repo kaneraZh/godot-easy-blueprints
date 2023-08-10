@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmsahyy5q5br1"]
+
+[ext_resource type="Script" path="res://nav_simple.gd" id="1_au2c1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j03h6"]
+size = Vector2(64, 64)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_j3hvs"]
+vertices = PackedVector2Array(953, 31, 970, 506, 654, 475, 655, 138, 78, 37, 489, 140, 88, 401, 495, 445)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(88, 401, 495, 445, 489, 140, 655, 138, 654, 475, 970, 506, 953, 31, 78, 37)])
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(219, 202)
+
+[node name="minimal" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
+top_level = true
+position = Vector2(821, 368)
+script = ExtResource("1_au2c1")
+speed = 207.006
+target = NodePath("../Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="minimal"]
+shape = SubResource("RectangleShape2D_j03h6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="minimal"]
+radius = 42.5
+debug_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_j3hvs")

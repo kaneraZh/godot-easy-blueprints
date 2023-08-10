@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cykv6i7mlra2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76qq7"]
+skew = Vector2(1, 0)
+border_width_right = 224
+border_color = Color(0, 0, 0, 0)
+border_blend = true
+expand_margin_left = 27.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rcij"]
+
+[resource]
+Button/styles/normal = SubResource("StyleBoxFlat_76qq7")
+Label/styles/normal = SubResource("StyleBoxFlat_76qq7")
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_5rcij")

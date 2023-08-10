@@ -1,119 +1,55 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://bc4gqqw44b50a"]
 
-[ext_resource path="res://shaders/fadeout_stretched.gdshader" type="Shader" id=1]
-[ext_resource path="res://shaders/fadeout_stretched.tres" type="Material" id=2]
-[ext_resource path="res://shaders/menu.gd" type="Script" id=3]
-[ext_resource path="res://shaders/fadeout_stratched.gd" type="Script" id=4]
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 1 )
-shader_param/offset = Vector2( 0, 0 )
-shader_param/stretch = Vector2( 2, 1 )
-shader_param/color = Color( 0.0666667, 0.101961, 0.152941, 1 )
-shader_param/fade_start = 0.26
-shader_param/fade_end = 0.76
-
-[sub_resource type="Theme" id=10]
+[ext_resource type="Script" path="res://menu.gd" id="1_larxg"]
+[ext_resource type="Theme" uid="uid://cykv6i7mlra2" path="res://theme.tres" id="1_whewu"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_whewu")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_direction = 3
+layout_mode = 0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
-offset_right = 93.0
-offset_bottom = 600.0
-theme_override_constants/separation = 0
-script = ExtResource( 3 )
+layout_mode = 2
+script = ExtResource("1_larxg")
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
-material = SubResource( 3 )
-offset_right = 93.0
-offset_bottom = 28.0
-__meta__ = {
-"_edit_group_": true
-}
+layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer"]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 86.0
-offset_bottom = 21.0
+layout_mode = 2
 text = "MAIN MENU"
 
 [node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-material = ExtResource( 2 )
-offset_top = 28.0
-offset_right = 93.0
-offset_bottom = 48.0
-theme = SubResource( 10 )
+layout_mode = 2
 text = "1"
-align = 0
-script = ExtResource( 4 )
-press = Color( 0.686275, 0.768627, 0.941176, 1 )
-focus = Color( 0.32549, 0.556863, 0.72549, 1 )
-unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-material = ExtResource( 2 )
-offset_top = 48.0
-offset_right = 93.0
-offset_bottom = 68.0
+layout_mode = 2
 text = "2"
-align = 0
-script = ExtResource( 4 )
-press = Color( 0.686275, 0.768627, 0.941176, 1 )
-focus = Color( 0.32549, 0.556863, 0.72549, 1 )
-unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade2" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-material = ExtResource( 2 )
-offset_top = 68.0
-offset_right = 93.0
-offset_bottom = 88.0
+layout_mode = 2
 text = "3"
-align = 0
-script = ExtResource( 4 )
-press = Color( 0.686275, 0.768627, 0.941176, 1 )
-focus = Color( 0.32549, 0.556863, 0.72549, 1 )
-unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade3" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-material = ExtResource( 2 )
-offset_top = 88.0
-offset_right = 93.0
-offset_bottom = 108.0
+layout_mode = 2
 text = "4"
-align = 0
-script = ExtResource( 4 )
-press = Color( 0.686275, 0.768627, 0.941176, 1 )
-focus = Color( 0.32549, 0.556863, 0.72549, 1 )
-unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade4" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-material = ExtResource( 2 )
-offset_top = 108.0
-offset_right = 93.0
-offset_bottom = 128.0
+layout_mode = 2
 text = "5"
-align = 0
-script = ExtResource( 4 )
-press = Color( 0.686275, 0.768627, 0.941176, 1 )
-focus = Color( 0.32549, 0.556863, 0.72549, 1 )
-unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
 
 [node name="ButtonFade5" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-material = ExtResource( 2 )
-offset_top = 128.0
-offset_right = 93.0
-offset_bottom = 148.0
+layout_mode = 2
 text = "6"
-align = 0
-script = ExtResource( 4 )
-press = Color( 0.686275, 0.768627, 0.941176, 1 )
-focus = Color( 0.32549, 0.556863, 0.72549, 1 )
-unfocus = Color( 0.262745, 0.329412, 0.368627, 1 )
