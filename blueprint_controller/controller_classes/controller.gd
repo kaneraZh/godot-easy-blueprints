@@ -2,10 +2,16 @@
 class_name Controller
 extends Node
 
+var inputs_every_frame:Array
 var inputs:Array
 func _update_inputs():
-	inputs = buttons
+	inputs_every_frame = []
+	inputs = []
+	inputs.append_array(buttons)
 	inputs.append_array(groups)
+	for i in inputs:
+		if(i.get_check_every_frame()):
+			inputs_every_frame.append(i)
 @export var buttons:Array[InputRaw]		:set=set_buttons
 func set_buttons(b:Array[InputRaw])->void:
 	buttons = b
@@ -41,11 +47,12 @@ func get_group_id(id:int)->InputGroup:
 #	assert(id<groups.size() && id>=0,"wrong group id solicited <%s>"%id)
 #	return groups[id]
 
-@export_flags("process"
+@export_flags("active"
 	)var settings = 0b1
-func set_active(a:int):
+func set_active(a:bool):
 	settings&= ~(settings&(1<<0))
-	settings+= (a&1)<<0
+	settings+= (int(a)&1)<<0
+	for i in inputs:i.set_active(a)
 func get_active()->int:
 	return (settings>>0)&1
 
@@ -68,5 +75,5 @@ var emits_signal = []
 func _enter_tree_game():pass
 func _process_game(_delta:float):
 	if(get_active()):
-		for i in inputs: i.press()
+		for i in inputs_every_frame:i.press()
 func _input_game(_event:InputEvent):	pass

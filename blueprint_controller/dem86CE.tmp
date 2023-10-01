@@ -19,7 +19,7 @@ active = 1
 [sub_resource type="Resource" id="Resource_3r35v"]
 script = ExtResource("4_j4e7n")
 value = 0.383
-settings = 3
+settings = 7
 
 [sub_resource type="Resource" id="Resource_cxxvv"]
 script = ExtResource("4_wjiro")
@@ -43,8 +43,6 @@ positive = SubResource("Resource_2fu3f")
 negative = SubResource("Resource_cxxvv")
 thresholds = Array[ExtResource("4_j4e7n")]([])
 settings = 0
-deadzone_in = 0.0
-deadzone_out = 1.0
 name = &""
 active = 1
 
@@ -70,8 +68,6 @@ positive = SubResource("Resource_liii2")
 negative = SubResource("Resource_yeik8")
 thresholds = Array[ExtResource("4_j4e7n")]([])
 settings = 0
-deadzone_in = 0.0
-deadzone_out = 1.0
 name = &""
 active = 1
 
@@ -80,8 +76,6 @@ script = ExtResource("3_dnq7u")
 xAxis = SubResource("Resource_hoi1o")
 yAxis = SubResource("Resource_70bbr")
 thresholds = Array[ExtResource("4_j4e7n")]([SubResource("Resource_3r35v")])
-deadzone_in = 0.0
-deadzone_out = 1.0
 name = &"stick"
 active = 1
 

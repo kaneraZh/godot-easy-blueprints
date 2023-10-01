@@ -1,2 +1,5 @@
 res://default_env.tres
 res://demo.tscn
+res://controller_classes/analog/analog.gd
+res://controller_classes/analog/analog1d.gd
+res://controller_classes/analog/analog2d.gd

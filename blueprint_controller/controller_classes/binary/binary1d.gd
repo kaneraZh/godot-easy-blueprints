@@ -5,15 +5,15 @@ extends InputGroup
 func set_positive(p:Binary):
 	positive = p# if (p is Binary) else Binary.new()
 	positive.setup(get_on_release(),get_on_press(),get_active())
-	positive.connect("just_pressed", Callable(self, "emit_signal").bind("just_pressed"))
-	positive.connect("just_released", Callable(self, "emit_signal").bind("just_released"))
+	positive.connect(&"just_pressed", Callable(self, &"emit_signal").bind(&"just_pressed"))
+	positive.connect(&"just_released", Callable(self, &"emit_signal").bind(&"just_released"))
 func get_positive()->Binary: return positive
 @export var negative:Binary: get = get_negative, set = set_negative
 func set_negative(n:Binary):
 	negative = n# if (n is Binary) else Binary.new()
 	negative.setup(get_on_release(),get_on_press(),get_active())
-	negative.connect("just_pressed", Callable(self, "emit_signal").bind("just_pressed"))
-	negative.connect("just_released", Callable(self, "emit_signal").bind("just_released"))
+	negative.connect(&"just_pressed", Callable(self, &"emit_signal").bind(&"just_pressed"))
+	negative.connect(&"just_released", Callable(self, &"emit_signal").bind(&"just_released"))
 func get_negative()->Binary: return negative
 signal just_released
 signal just_pressed
@@ -43,15 +43,19 @@ func set_settings(
 "on release",
 "on press"
 	) var signals := 0
-func set_on_release(f:int):	signals = (signals&(~(1<<0)))+((f&1)<<0)
-func set_on_press(f:int):	signals = (signals&(~(1<<1)))+((f&1)<<1)
+func set_on_release(f:bool):
+	signals = (signals&(~(1<<0)))+((int(f)&1)<<0)
+	set_check_every_frame(f)
+func set_on_press(f:bool):
+	signals = (signals&(~(1<<1)))+((int(f)&1)<<1)
+	set_check_every_frame(f)
 func get_on_release():	return (signals>>0)&1
 func get_on_press():	return (signals>>1)&1
 func set_flags(
 	on_release:bool,
 	on_press:bool):
-		set_on_press(	int(on_press))
-		set_on_release(	int(on_release))
+		set_on_press(on_press)
+		set_on_release(on_release)
 
 func press()->float:
 	var value:float = positive.press() - negative.press()

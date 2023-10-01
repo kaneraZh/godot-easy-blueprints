@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://co5xfidn8rh06"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_b2k1o"]
+[ext_resource type="Script" path="res://resources/menu_item.gd" id="2_ddvie"]
+
+[sub_resource type="Resource" id="Resource_jk33h"]
+script = ExtResource("2_ddvie")
+text = "tyjtyjtyj"
+
+[sub_resource type="Resource" id="Resource_id4is"]
+script = ExtResource("2_ddvie")
+text = "asdasd"
+
+[sub_resource type="Resource" id="Resource_nq4jl"]
+script = ExtResource("2_ddvie")
+text = "123123123"
+
+[sub_resource type="Resource" id="Resource_6ngkc"]
+script = ExtResource("2_ddvie")
+text = "asd12gfrg"
+
+[node name="Control" type="CanvasLayer"]
+
+[node name="VMenu" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b2k1o")
+items = Array[ExtResource("2_ddvie")]([SubResource("Resource_jk33h"), SubResource("Resource_id4is"), SubResource("Resource_nq4jl"), SubResource("Resource_6ngkc")])
