@@ -23,7 +23,7 @@ func setup(
 		set_active(active)
 var last:int = 0
 func press()->float:
-	var p:= float(Input.is_action_pressed(action)) * active
+	var p:int = int(Input.is_action_pressed(action)) * active
 	if(		get_on_press()	&& p != last && p ):emit_signal(&"just_pressed")
 	elif(	get_on_release()&& p != last && !p):emit_signal(&"just_released")
 	last = p

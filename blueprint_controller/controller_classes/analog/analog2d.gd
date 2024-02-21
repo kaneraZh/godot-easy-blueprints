@@ -7,7 +7,7 @@ func set_x(x:Analog1D):
 	xAxis = x
 	xAxis.connect(&"just_above", Callable(self, &"emit_signal").bind(&"just_above_x"))
 	xAxis.connect(&"just_below", Callable(self, &"emit_signal").bind(&"just_below_x"))
-	xAxis.append_thresholds(thresholds)
+	xAxis.append_thresholds(thresholds.duplicate())
 	xAxis.set_deadzone_in(0.0)
 	xAxis.set_deadzone_out(1.0)
 func get_x()->Analog1D: return xAxis
@@ -16,7 +16,7 @@ func set_y(y:Analog1D):
 	yAxis = y
 	yAxis.connect(&"just_above", Callable(self, &"emit_signal").bind(&"just_above_y"))
 	yAxis.connect(&"just_below", Callable(self, &"emit_signal").bind(&"just_below_y"))
-	yAxis.append_thresholds(thresholds)
+	yAxis.append_thresholds(thresholds.duplicate())
 	yAxis.set_deadzone_in(0.0)
 	yAxis.set_deadzone_out(1.0)
 func get_y()->Analog1D: return yAxis
@@ -50,6 +50,9 @@ func set_deadzone_out(dz:float)->void:
 
 func press()->Vector2:
 	var res:Vector2 = Vector2(xAxis.press(), yAxis.press()) * active
+#	clamp(Input.get_action_strength(action)-deadzone_in, 0.0, deadzone_out) / deadzone_out)
+	var magnitude:float = clampf(res.length()-deadzone_in, 0.0, deadzone_out) / deadzone_out
 	for t in thresholds:
-		t.test_squared(res.length_squared())
+#		t.test_squared(res.length_squared())
+		t.test(magnitude)
 	return res

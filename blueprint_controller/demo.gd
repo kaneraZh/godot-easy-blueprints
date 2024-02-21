@@ -11,6 +11,7 @@ func on_pause_press():print("paused!")
 func on_pause_release():print("unpaused!")
 @export var stick:Analog2D
 @export var pad:Binary2D
+@export var mouse:InputMouse
 var controller:Controller : set=set_controller
 func set_controller(c:Controller):
 	controller = c
@@ -19,10 +20,19 @@ func set_controller(c:Controller):
 	controller.add_group(pad)
 	stick.connect(&"just_above", Callable(self, &"_on_stick_threshold_above"))
 	stick.connect(&"just_below", Callable(self, &"_on_stick_threshold_below"))
-func _on_stick_threshold_above(theshold_value:float)->void:print_debug('im just above %s'%theshold_value)
-func _on_stick_threshold_below(theshold_value:float)->void:print_debug('im just above %s'%theshold_value)
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+#	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+#	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CONFINED)
+func _on_stick_threshold_above(theshold_value:float)->void:
+	print('ABOVE %s'%theshold_value)
+#	print_debug('ABOVE %s'%theshold_value)
+func _on_stick_threshold_below(theshold_value:float)->void:
+	print('BELOW %s'%theshold_value)
+#	print_debug('BELOW %s'%theshold_value)
 func _process(_delta):
 #	print_debug(stick.press())
+#	print(Input.mouse_get_position())
+	print(mouse.press(), '\t', DisplayServer.window_get_position(), '\t', DisplayServer.get_window_list())
 	queue_redraw()
 
 @onready var center:Vector2		= Vector2(get_window().size/2)

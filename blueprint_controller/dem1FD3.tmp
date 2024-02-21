@@ -143,10 +143,10 @@ active = 1
 
 [sub_resource type="Resource" id="Resource_2p23n"]
 script = ExtResource("9_svo01")
-active = 2
+active = 1
 thresholds = Array[ExtResource("4_j4e7n")]([])
-cursor_visible = 1
-cursor_mobility = 0
+deadzone_in = 0
+deadzone_out = 1
 
 [node name="demo" type="Node2D"]
 script = ExtResource("1")

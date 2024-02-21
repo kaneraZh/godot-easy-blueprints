@@ -42,6 +42,7 @@ func set_axis(f:int):	settings = (settings&(~(1<<2)))+((f&1)<<2)
 func get_flip():	return (settings>>0)&1
 func get_mode():	return (settings>>1)&1
 func get_axis():	return (settings>>2)&1
+@warning_ignore("shadowed_variable")
 func set_settings(
 	flip:bool,
 	mode:bool,

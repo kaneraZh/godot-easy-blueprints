@@ -1,4 +1,3 @@
-@tool
 class_name Analog
 extends InputRaw
 
@@ -15,6 +14,7 @@ func append_thresholds(t:Array[ThresholdAbs]):
 	var res:Array[ThresholdAbs] = get_thresholds()
 	res.append_array(t)
 	set_thresholds(res)
+@warning_ignore("shadowed_variable")
 func set_threshold_active(id:int, active:int):
 	assert(id<thresholds.size() && id>0)
 	thresholds[id].set_active(active)

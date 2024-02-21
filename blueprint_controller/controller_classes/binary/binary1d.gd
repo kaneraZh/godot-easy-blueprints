@@ -19,16 +19,17 @@ signal just_released
 signal just_pressed
 
 @export_flags(
-"flip",
-"t/f -> add/priority",
-"on priority t/f -> +/-"
-	) var settings := 0b000
+	"flip",
+	"t/f -> add/priority",
+	"on priority t/f -> +/-"
+		) var settings := 0b000
 func set_flip(f:int):settings = (settings&(~(1<<0)))+((f&1)<<0)
 func set_mode(f:int):settings = (settings&(~(1<<1)))+((f&1)<<1)
 func set_axis(f:int):settings = (settings&(~(1<<2)))+((f&1)<<2)
 func get_flip()->int:return (settings>>0)&1
 func get_mode()->int:return (settings>>1)&1
 func get_axis()->int:return (settings>>2)&1
+@warning_ignore("shadowed_variable")
 func set_settings(
 	flip:bool,
 	mode:bool,
@@ -40,9 +41,9 @@ func set_settings(
 		set_active(active)
 
 @export_flags(
-"on release",
-"on press"
-	) var signals := 0
+	"on release",
+	"on press"
+		) var signals := 0
 func set_on_release(f:bool):
 	signals = (signals&(~(1<<0)))+((int(f)&1)<<0)
 	set_check_every_frame(f)

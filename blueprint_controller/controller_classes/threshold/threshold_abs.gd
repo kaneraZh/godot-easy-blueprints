@@ -7,8 +7,8 @@ func set_value(v:float)->void:
 func test(val:float)->int:
 	var res:int = int(signf(val-value) * get_active())
 	if(res != last && res != 0):
-		if(res==get_onAbove()):emit_signal(&"just_above")
-		elif(	get_onBelow()):emit_signal(&"just_below")
+		if(		res== get_onAbove()):emit_signal(&"just_above")
+		elif(	res==-get_onBelow()):emit_signal(&"just_below")
 	last = res
 	return res
 var value_squared:float

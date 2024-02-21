@@ -74,6 +74,10 @@ func _input_editor(_event:InputEvent):	pass
 var emits_signal = []
 func _enter_tree_game():pass
 func _process_game(_delta:float):
+#	if(get_active()):
+#		for i in inputs_every_frame:i.press()
+	pass
+func _input_game(_event:InputEvent):
 	if(get_active()):
 		for i in inputs_every_frame:i.press()
-func _input_game(_event:InputEvent):	pass
+	pass
