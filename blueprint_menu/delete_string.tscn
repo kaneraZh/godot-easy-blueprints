@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cwiwwatv8s5dk"]
+
+[node name="SettingsVaraible" type="HBoxContainer"]
+offset_right = 532.0
+offset_bottom = 103.0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3

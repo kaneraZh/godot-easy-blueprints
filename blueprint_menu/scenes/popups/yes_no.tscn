@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp5wtv7krec"]
+
+[ext_resource type="Theme" uid="uid://dauqt16vvoohi" path="res://resources/themes/popup.tres" id="1_we8hp"]
+[ext_resource type="Script" path="res://scripts/gui/popups/yes_no.gd" id="2_wrhi6"]
+
+[node name="yes_no" type="PanelContainer" node_paths=PackedStringArray("label", "btn_accept", "btn_cancel")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -57.0
+offset_right = 90.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_we8hp")
+script = ExtResource("2_wrhi6")
+label = NodePath("MarginContainer/VBoxContainer/Label")
+btn_accept = NodePath("MarginContainer/VBoxContainer/HBoxContainer/accept")
+btn_cancel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/cancel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "POPUP YESNO"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="accept" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Accept"
+
+[node name="cancel" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"

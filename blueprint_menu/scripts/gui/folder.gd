@@ -20,36 +20,30 @@ func _ready():
 	container.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	scroll.add_child(container)
 	
-	var contents:Array = []
-	contents.append_array( DirAccess.get_files_at(folder) )
-	contents.append_array( DirAccess.get_directories_at(folder))
-	for dir in contents:
-		@warning_ignore("confusable_local_declaration")
-		var btn:UiButton = UiButton.new()
-		btn.set_name(dir)
-		btn.set_text(dir)
-		btn.set_options(UiButton.OPTIONS.ROOT_IS_NOT_PARENT)
-		btn.menu_root = self
-		@warning_ignore("shadowed_variable")
-		var path:String = '%s/%s'%[folder, dir]
-		if(dir.ends_with('.tscn')):
-			btn.set_mode(UiButton.MODE.CHANGE_SCENE)
-			btn.generic_resource = load(path)
-		if(dir.ends_with('.tres')):
-			btn.set_mode(UiButton.MODE.EMIT_SELECTION)
-			btn.generic_resource = load(path)
-		else:
-			btn.set_mode(UiButton.MODE.FOLDER)
-			btn.folder_directory = path
+	var button=func(name:String)->UiButton:
+		var res:UiButton = UiButton.new()
+		res.set_name(name)
+		res.set_text(name)
+		res.set_options(UiButton.OPTIONS.ROOT_IS_NOT_PARENT)
+		res.menu_root = self
+		return res
+	for dir in DirAccess.get_files_at(folder):
+		var btn:UiButton = button.call(dir)
+		btn.set_mode(
+			UiButton.MODE.CHANGE_SCENE 
+			if dir.ends_with('.tscn') else 
+			UiButton.MODE.EMIT_SELECTION
+		)
+		btn.generic_resource = load('%s/%s'%[folder, dir])
 		container.add_child(btn)
-	var btn:UiButton = UiButton.new()
+	for dir in DirAccess.get_directories_at(folder):
+		var btn:UiButton = button.call(dir)
+		btn.set_mode(UiButton.MODE.FOLDER)
+		btn.folder_directory = '%s/%s'%[folder, dir]
+		container.add_child(btn)
+	var btn:UiButton = button.call("Back")
 	btn.set_mode(UiButton.MODE.FREE)
-	btn.set_name('Back')
-	btn.set_text('Back')
-	btn.set_options(UiButton.OPTIONS.ROOT_IS_NOT_PARENT)
-	btn.menu_root = self
 	container.add_child(btn)
-	
-	main_focus = get_child(0, true)
+	main_focus = container.get_child(0, true)
 	
 	super()

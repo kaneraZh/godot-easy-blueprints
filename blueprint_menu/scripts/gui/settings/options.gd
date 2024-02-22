@@ -14,12 +14,12 @@ func get_option(): return option
 @export var items:Array[SettingsOptionsItem]=[] : set=set_items, get=get_items
 func set_items(v:Array[SettingsOptionsItem])->void:
 	items = v
+	for item in items:item.set_type(get_type())
 	option_update()
 func get_items()->Array[SettingsOptionsItem]: return items
-func get_item_id(item:String)->int:
+func get_item_id(item:Variant)->int:
 	for i in items.size():
-		if(items[i].get_text() == item):
-			return i
+		if(items[i].get_value() == item):return i
 	push_error("<%s> is not registered as an option"%item)
 	return 0
 @export var selected:int=0 : set=set_selected, get=get_selected
@@ -36,49 +36,16 @@ func option_update()->void:
 		else:
 			option.add_item( i.get_text() )
 	option._select_int(selected)
+func set_type(v:TYPES_ALLOWED)->void:
+	super(v)
+	for item in items:item.set_type(get_type())
 
 func _ready():
 	super()
 	if(!option):set_option(OptionButton.new())
-	
-	set_selected( get_item_id(ProjectSettings.get_setting(setting)) )
 	read()
 
-enum TYPES_OPTIONS{STRING, INT, FLOAT}
-const TYPES_OPTIONS_STR:String = "STRING, INT, FLOAT"
-#@export var type:TYPES = TYPES.STRING
-#@export var setting:String
-func get_value():
-	var res:String = get_option().get_item_text( get_option().get_selected_id() )
-	match type:
-		TYPES_OPTIONS.STRING:	return res
-		TYPES_OPTIONS.INT:		return int(res)
-		TYPES_OPTIONS.FLOAT:	return float(res)
-func read()->void: set_selected( ProjectSettings.get_setting(setting) )
-func save()->void:
-	match type:
-		TYPES_OPTIONS.STRING:	ProjectSettings.set_setting( setting, get_value() )
-		TYPES_OPTIONS.INT:		ProjectSettings.set_setting( setting, int(get_value()) )
-		TYPES_OPTIONS.FLOAT:	ProjectSettings.set_setting( setting, float(get_value()) )
-func check()->bool:
-	return ProjectSettings.get_setting(setting)==get_value()
-
-func get_property_list_settings()->Array[Dictionary]:
-	var properties:Array[Dictionary] = []
-	properties.append({
-		"name": "type",
-		"class_name": "",
-		"type": TYPE_INT,
-		"hint": PROPERTY_HINT_ENUM,
-		"hint_string": TYPES_OPTIONS_STR,
-		"usage": PROPERTY_USAGE_SCRIPT_VARIABLE + PROPERTY_USAGE_DEFAULT
-	})
-	properties.append({
-		"name": "default_value",
-		"class_name": "",
-		"type": [TYPE_STRING, TYPE_INT, TYPE_FLOAT][type],
-		"hint": PROPERTY_HINT_NONE,
-		"hint_string": "",
-		"usage": PROPERTY_USAGE_SCRIPT_VARIABLE + PROPERTY_USAGE_DEFAULT
-	})
-	return properties
+func get_value():return items[ get_option().get_selected_id() ].get_value()
+func read()->void:	set_selected( get_item_id(ProjectSettings.get_setting(setting)) )
+func save()->void:	ProjectSettings.set_setting( setting, get_value() )
+func check()->bool:	return ProjectSettings.get_setting(setting)==get_value()

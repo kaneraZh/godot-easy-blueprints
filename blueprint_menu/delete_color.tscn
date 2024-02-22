@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dsrdakh3vkmko"]
+
+[node name="SettingsVaraible" type="HBoxContainer"]
+offset_right = 392.0
+offset_bottom = 133.0
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+layout_mode = 2
+text = "asdasdasdasdasd"
+edit_alpha = false

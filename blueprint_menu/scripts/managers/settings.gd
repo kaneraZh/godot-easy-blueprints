@@ -21,14 +21,11 @@ static func _save_project_settings(
 	paths_exclude:PackedStringArray
 )->int:
 	var file:ConfigFile = ConfigFile.new()
-	var contents:Dictionary = {}
-	var includes = paths_include
 	for path:String in _get_project_settings(paths_include, paths_exclude):
 		var section:String = path.get_slice('/', 0)
 		var key:String = path.trim_prefix("%s/"%section)
 		var value = ProjectSettings.get(path) if !section.matchn("input") else InputMap.action_get_events(key)
 		file.set_value(section,key,value)
-		contents[section+'/'+key] = value
 		print("saved <%s> as %10s"%[path, ProjectSettings.get(path)])
 	return file.save(directory)
 static func _load_project_settings(
