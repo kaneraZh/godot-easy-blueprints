@@ -33,32 +33,30 @@ func is_popup()->int: return (options>>1)&1
 
 var generic_resource:Resource	= null
 var folder_directory:String		= ''
-enum METHODS_CLASSES { MENU_ROOT, SCENE_TREE, MANAGER_SETTINGS }
-const METHODS_CLASSES_STR:String= "MENU_ROOT, SCENE_TREE, MANAGER_SETTINGS"
+enum METHODS_CLASSES { MENU_ROOT, SCENE_TREE}
 var method_class:METHODS_CLASSES= METHODS_CLASSES.SCENE_TREE
 var method_method:StringName	= StringName()
 var menu_root:UiMenu : set=set_menu_root, get=get_menu_root
 func get_menu_root()->UiMenu: return get_parent() if is_root_parent() else menu_root
 func set_menu_root(v:UiMenu)->void: menu_root = v
 
-# CONFIRMATION		: Confirms that you REALLY wanted to press that button
-# CHECK_METHOD		: Checks a method on local_root, expects a bool, if:
-#						false: it shows the popup for confirmation of the
-#						action, if accepted, the action will be perfomed.
-#						true: it performs the action
+# CONFIRM	: Confirms that you REALLY wanted to press that button
+# ASSERT	: Checks a method on local_root, expects a bool, if:
+#				false: it shows the popup for confirmation of the
+#					action, if accepted, the action is perfomed.
+#				true: it performs the action
 enum POPUP_MODE {
-	CONFIRMATION,
-	CHECK_METHOD,
+	CONFIRM,
+	ASSERT,
 }
-const POPUP_MODE_STR = "CONFIRMATION,CHECK_METHOD"
-var popup_mode:POPUP_MODE		= POPUP_MODE.CONFIRMATION : set=set_mode_popup, get=get_mode_popup
+var popup_mode:POPUP_MODE		= POPUP_MODE.CONFIRM : set=set_mode_popup, get=get_mode_popup
 func get_mode_popup()->POPUP_MODE: return popup_mode
 func set_mode_popup(v:POPUP_MODE)->void:
 	popup_mode = v
 	notify_property_list_changed()
-var popup_check_method:StringName=&""
-var popup_scene:PackedScene		= null
-var popup_text:String			= ''
+var popup_assert:StringName	= &""
+var popup_scene:PackedScene	= null
+var popup_text:String		= ''
 func get_popup()->Control:
 	assert(popup_scene is PackedScene)
 	var pop:Control = popup_scene.instantiate()
@@ -175,7 +173,7 @@ func _get_property_list()->Array[Dictionary]:
 				#"class_name": "",
 				"type": TYPE_INT,
 				"hint": PROPERTY_HINT_ENUM,
-				"hint_string": METHODS_CLASSES_STR,
+				"hint_string": ','.join( METHODS_CLASSES.keys() ),
 				"usage": 4102
 			})
 			properties.append({
@@ -201,7 +199,7 @@ func _get_property_list()->Array[Dictionary]:
 				#"class_name": "",
 				"type": TYPE_INT,
 				"hint": PROPERTY_HINT_ENUM,
-				"hint_string": POPUP_MODE_STR,
+				"hint_string": ','.join(POPUP_MODE.keys()),
 				"usage": 4102
 			})
 			properties.append({
@@ -212,9 +210,9 @@ func _get_property_list()->Array[Dictionary]:
 				"hint_string": "PackedScene",
 				"usage": 4102
 			})
-			if(popup_mode == POPUP_MODE.CHECK_METHOD):
+			if(popup_mode == POPUP_MODE.ASSERT):
 				properties.append({
-					"name": "popup_check_method",
+					"name": "popup_assert",
 					#"class_name": "",
 					"type": TYPE_STRING_NAME,
 					"hint": PROPERTY_HINT_NONE,
@@ -239,10 +237,10 @@ func _on_press()->void:
 	match is_popup():
 		1:
 			match popup_mode:
-				POPUP_MODE.CONFIRMATION:
+				POPUP_MODE.CONFIRM:
 					menu_root.add_popup( get_popup() )
-				POPUP_MODE.CHECK_METHOD:
-					if(!menu_root.call(popup_check_method) ):
+				POPUP_MODE.ASSERT:
+					if(!menu_root.call(popup_assert) ):
 						menu_root.add_popup( get_popup() )
 					else :
 						_on_success()
@@ -273,8 +271,8 @@ func _on_success()->void:
 					menu_root.call(method_method)
 				METHODS_CLASSES.SCENE_TREE:
 					get_tree().call(method_method)
-				METHODS_CLASSES.MANAGER_SETTINGS:
-					ManagerSettings.call(method_method)
+				#METHODS_CLASSES.MANAGER_SETTINGS:
+					#ManagerSettings.call(method_method)
 
 #func _on_failure()->void:
 	#pass

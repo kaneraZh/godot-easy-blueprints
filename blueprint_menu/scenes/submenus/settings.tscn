@@ -1,0 +1,525 @@
+[gd_scene load_steps=18 format=3 uid="uid://dar8hf8p8a7y6"]
+
+[ext_resource type="Script" path="res://scripts/gui/settings.gd" id="1_j15e6"]
+[ext_resource type="Script" path="res://scripts/gui/settings/options.gd" id="2_medbl"]
+[ext_resource type="Script" path="res://scripts/gui/buttons/button.gd" id="2_pi8ra"]
+[ext_resource type="Script" path="res://scripts/gui/settings/options_item.gd" id="3_wk08e"]
+[ext_resource type="Script" path="res://scripts/gui/settings/slider.gd" id="4_q3slb"]
+[ext_resource type="Script" path="res://scripts/gui/settings/bool.gd" id="5_sy03s"]
+[ext_resource type="Script" path="res://scripts/gui/settings/input.gd" id="6_5uid2"]
+[ext_resource type="PackedScene" uid="uid://xcytprvqvw2i" path="res://scenes/popups/input.tscn" id="7_5nxme"]
+[ext_resource type="PackedScene" uid="uid://dp5wtv7krec" path="res://scenes/popups/yes_no.tscn" id="7_8hjbp"]
+
+[sub_resource type="Resource" id="Resource_y4m6n"]
+script = ExtResource("3_wk08e")
+text = "these are string options"
+separator = false
+description = ""
+value = "first"
+
+[sub_resource type="Resource" id="Resource_386rp"]
+script = ExtResource("3_wk08e")
+text = "their values are different"
+separator = false
+description = ""
+value = "second"
+
+[sub_resource type="Resource" id="Resource_lxet8"]
+script = ExtResource("3_wk08e")
+text = "from the displayed text"
+separator = false
+description = ""
+value = "third"
+
+[sub_resource type="Resource" id="Resource_fp6gf"]
+script = ExtResource("3_wk08e")
+text = "(up) this makes it easy"
+separator = false
+description = ""
+value = Vector2(0, 1)
+
+[sub_resource type="Resource" id="Resource_ybdl5"]
+script = ExtResource("3_wk08e")
+text = "(left) to use non-intuitive values"
+separator = false
+description = ""
+value = Vector2(1, 0)
+
+[sub_resource type="Resource" id="Resource_hj53y"]
+script = ExtResource("3_wk08e")
+text = "(down) such as vector2, for example"
+separator = false
+description = ""
+value = null
+
+[sub_resource type="Resource" id="Resource_gy46k"]
+script = ExtResource("3_wk08e")
+text = "or PackedFloat64Array"
+separator = false
+description = ""
+value = PackedFloat64Array(6.51651e+06)
+
+[sub_resource type="Resource" id="Resource_ekowf"]
+script = ExtResource("3_wk08e")
+text = "if you would ever want such option"
+separator = false
+description = ""
+value = PackedFloat64Array(464, 8.49425e+06, 69)
+
+[node name="settings" type="VBoxContainer" node_paths=PackedStringArray("tab_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j15e6")
+tab_container = NodePath("TabContainer")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 3
+
+[node name="sliders" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/sliders/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="label_simple" type="Label" parent="TabContainer/sliders/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Simple 0-100 slider"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="slider_simple" type="HBoxContainer" parent="TabContainer/sliders/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_q3slb")
+value = 75.0
+setting = "custom/settings/sliders/simple"
+default_value = 50.0
+
+[node name="label_normal" type="Label" parent="TabContainer/sliders/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Normalized Slider"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="slider_normal" type="HBoxContainer" parent="TabContainer/sliders/MarginContainer/GridContainer"]
+layout_mode = 2
+script = ExtResource("4_q3slb")
+max_value = 1.0
+step = 0.05
+value = 0.8
+setting = "custom/settings/sliders/normal"
+default_value = 0.8
+
+[node name="label_mess" type="Label" parent="TabContainer/sliders/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Kind-of-a-mess Slider"
+
+[node name="slider_mess" type="HBoxContainer" parent="TabContainer/sliders/MarginContainer/GridContainer"]
+layout_mode = 2
+script = ExtResource("4_q3slb")
+max_value = 22.9
+min_value = -10.8
+step = 0.65
+value = 5.45
+setting = "custom/settings/sliders/mess"
+default_value = 5.45
+
+[node name="options" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/options/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="label_string" type="Label" parent="TabContainer/options/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "String"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="options_string" type="HBoxContainer" parent="TabContainer/options/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_medbl")
+items = Array[ExtResource("3_wk08e")]([SubResource("Resource_y4m6n"), SubResource("Resource_386rp"), SubResource("Resource_lxet8")])
+setting = "custom/settings/options/string"
+type = 3
+default_value = "first"
+
+[node name="label_vector2" type="Label" parent="TabContainer/options/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "vector 2"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="options_vector2" type="HBoxContainer" parent="TabContainer/options/MarginContainer/GridContainer"]
+layout_mode = 2
+script = ExtResource("2_medbl")
+items = Array[ExtResource("3_wk08e")]([SubResource("Resource_fp6gf"), SubResource("Resource_ybdl5"), SubResource("Resource_hj53y")])
+setting = "custom/settings/options/vector2"
+type = 4
+default_value = null
+
+[node name="label_options_float64_array" type="Label" parent="TabContainer/options/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "vector 2"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="options_float64_array" type="HBoxContainer" parent="TabContainer/options/MarginContainer/GridContainer"]
+layout_mode = 2
+script = ExtResource("2_medbl")
+items = Array[ExtResource("3_wk08e")]([SubResource("Resource_gy46k"), SubResource("Resource_ekowf")])
+setting = "custom/settings/options/packed_float64_array"
+type = 28
+default_value = PackedFloat64Array(6.51651e+06)
+
+[node name="bools" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/bools"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/bools/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="label_bool" type="Label" parent="TabContainer/bools/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Bools are not very complex"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="bool_0" type="HBoxContainer" parent="TabContainer/bools/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_sy03s")
+setting = "custom/settings/bool/bool"
+default_value = false
+
+[node name="label_boool" type="Label" parent="TabContainer/bools/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "they're just bools, true or false"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="bool_1" type="HBoxContainer" parent="TabContainer/bools/MarginContainer/GridContainer"]
+layout_mode = 2
+script = ExtResource("5_sy03s")
+setting = "custom/settings/bool/boool"
+default_value = true
+
+[node name="inputs" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/inputs"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/inputs/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 5
+
+[node name="label_demo0" type="Label" parent="TabContainer/inputs/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "demo0 - just keyboard, joystick inputs not showns"
+
+[node name="demo0_0" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 5
+popup/item_0/text = "Joystick"
+popup/item_0/id = 0
+popup/item_1/text = "Keyboard"
+popup/item_1/id = 1
+popup/item_2/text = "Mouse"
+popup/item_2/id = 2
+popup/item_3/text = "Mouse Motion"
+popup/item_3/id = 3
+popup/item_4/text = "Clear"
+popup/item_4/id = 4
+script = ExtResource("6_5uid2")
+action = &"demo0"
+allowed_devices = 512
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo0_1" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Keyboard"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo0"
+allowed_devices = 512
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo0_2" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Keyboard"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo0"
+allowed_devices = 512
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo0_3" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Keyboard"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo0"
+allowed_devices = 512
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="label_demo1" type="Label" parent="TabContainer/inputs/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "demo1 - keyboard & any joystick input"
+
+[node name="demo1_0" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Keyboard"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo1"
+allowed_devices = 768
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo1_1" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Joystick"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo1"
+allowed_devices = 768
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo1_2" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Joystick"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo1"
+allowed_devices = 768
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo1_3" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Joystick"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo1"
+allowed_devices = 768
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="label_demo2" type="Label" parent="TabContainer/inputs/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "demo2 - just joystick 1 inputs (effectively player 1)"
+
+[node name="demo2_0" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Joystick"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo2"
+allowed_devices = 1
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo2_1" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Joystick 1"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo2"
+allowed_devices = 1
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo2_2" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Joystick 1"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo2"
+allowed_devices = 1
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="demo2_3" type="MenuButton" parent="TabContainer/inputs/MarginContainer/GridContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INPUT"
+item_count = 2
+popup/item_0/text = "Joystick 1"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("6_5uid2")
+action = &"demo2"
+allowed_devices = 1
+menu_root = NodePath("../../../../..")
+popup_scene = ExtResource("7_5nxme")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="back" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Back"
+script = ExtResource("2_pi8ra")
+options = 2
+menu_root = NodePath("../..")
+popup_mode = 1
+popup_scene = ExtResource("7_8hjbp")
+popup_check_method = &"settings_check_all"
+popup_text = "You're about to discard unapplied settings."
+
+[node name="save" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Save"
+script = ExtResource("2_pi8ra")
+options = 2
+menu_root = NodePath("../..")
+popup_mode = 0
+popup_scene = ExtResource("7_8hjbp")
+popup_text = "You will save every setting set in these menus."
+
+[node name="reset" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("menu_root")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Reset"
+script = ExtResource("2_pi8ra")
+mode = 5
+options = 2
+menu_root = NodePath("../..")
+method_class = 0
+method_method = &"settings_reset_all"
+popup_mode = 0
+popup_scene = ExtResource("7_8hjbp")
+popup_text = "You will reset every setting to its default value"
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

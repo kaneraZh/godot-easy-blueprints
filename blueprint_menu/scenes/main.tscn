@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/gui/menu.gd" id="2_45hgg"]
 [ext_resource type="Script" path="res://scripts/gui/buttons/button.gd" id="3_qn3jb"]
 [ext_resource type="PackedScene" uid="uid://dp5wtv7krec" path="res://scenes/popups/yes_no.tscn" id="4_b3x0b"]
-[ext_resource type="PackedScene" uid="uid://dar8hf8p8a7y6" path="res://scenes/submenus/ui_settings.tscn" id="4_v275n"]
+[ext_resource type="PackedScene" uid="uid://dar8hf8p8a7y6" path="res://scenes/submenus/settings.tscn" id="4_v275n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8qcor"]
 font_size = 50
@@ -26,48 +26,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_45hgg")
-path = "settings"
-main_focus = NodePath("menu")
+path = "settings/"
+main_focus = NodePath("menus")
 
 [node name="Label" type="Label" parent="UiMenu"]
 layout_mode = 2
-text = "Demo Menu"
+text = "Demos Menu"
 label_settings = SubResource("LabelSettings_8qcor")
 
-[node name="menu" type="Button" parent="UiMenu"]
+[node name="menus" type="Button" parent="UiMenu"]
 editor_description = "skdjnksjdnfkjsdkfn"
 layout_mode = 2
-text = "Simple menu"
+text = "Menu demostration"
 alignment = 0
 script = ExtResource("3_qn3jb")
 mode = 1
 generic_resource = null
 
-[node name="folder" type="Button" parent="UiMenu"]
+[node name="menus2" type="Button" parent="UiMenu"]
+editor_description = "skdjnksjdnfkjsdkfn"
 layout_mode = 2
-text = "Folder menu"
+text = "Menu demostration"
 alignment = 0
 script = ExtResource("3_qn3jb")
-mode = 4
-folder_directory = "res://"
+mode = 1
+generic_resource = null
 
 [node name="settings" type="Button" parent="UiMenu"]
 layout_mode = 2
-text = "Settings"
+text = "Settings demostration"
 alignment = 0
 script = ExtResource("3_qn3jb")
 mode = 1
 generic_resource = ExtResource("4_v275n")
-
-[node name="close" type="Button" parent="UiMenu"]
-layout_mode = 2
-text = "Close"
-alignment = 0
-script = ExtResource("3_qn3jb")
-options = 3
-popup_mode = 0
-popup_scene = ExtResource("4_b3x0b")
-popup_text = "Do you wish to close this menu? (this will just become an empty screen)"
 
 [node name="quit" type="Button" parent="UiMenu"]
 layout_mode = 2
@@ -80,4 +71,4 @@ method_class = 1
 method_method = &"quit"
 popup_mode = 0
 popup_scene = ExtResource("4_b3x0b")
-popup_text = "Do you wish to stop the execution?"
+popup_text = "Do you wish to stop this?"

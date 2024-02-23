@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://cguh3e3pg7vmq"]
+
+[ext_resource type="Script" path="res://scripts/gui/menu.gd" id="1_7533i"]
+[ext_resource type="Script" path="res://scripts/gui/buttons/button.gd" id="2_tjg8y"]
+
+[node name="UiMenu" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7533i")
+
+[node name="UiButton" type="Button" parent="."]
+layout_mode = 2
+text = "path"
+alignment = 0
+script = ExtResource("2_tjg8y")
+mode = 1
+generic_resource = null
+
+[node name="UiButton2" type="Button" parent="."]
+layout_mode = 2
+text = "folder"
+alignment = 0
+script = ExtResource("2_tjg8y")
+mode = 4
+folder_directory = ""
+
+[node name="UiButton3" type="Button" parent="."]
+layout_mode = 2
+text = "emit a resource"
+alignment = 0
+script = ExtResource("2_tjg8y")
+mode = 3
+generic_resource = null
+
+[node name="UiButton4" type="Button" parent="."]
+layout_mode = 2
+text = "scene"
+alignment = 0
+script = ExtResource("2_tjg8y")
+mode = 2
+generic_resource = null
+
+[node name="UiButton5" type="Button" parent="."]
+layout_mode = 2
+text = "method"
+alignment = 0
+script = ExtResource("2_tjg8y")
+mode = 5
+method_class = 1
+method_method = &""
+
+[node name="UiButton6" type="Button" parent="."]
+layout_mode = 2
+text = "menu"
+alignment = 0
+script = ExtResource("2_tjg8y")
+mode = 1
+generic_resource = null
+
+[node name="UiButton7" type="Button" parent="."]
+layout_mode = 2
+text = "back (aka free)"
+alignment = 0
+script = ExtResource("2_tjg8y")

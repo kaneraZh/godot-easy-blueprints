@@ -7,7 +7,6 @@ func get_action()->StringName: return action
 func set_action(v:StringName)->void: action = v
 #func is_action()->bool: return InputMap.has_action(action)
 enum DEVICES{
-	ALL			=-1,
 	JOYSTICK_1	= 0,
 	JOYSTICK_2	= 1,
 	JOYSTICK_3	= 2,
@@ -115,7 +114,7 @@ func set_input_event(v:InputEvent)->void:
 			input_event.set_global_position(Vector2())
 			input_event.set_device(-1)
 	
-	var res:String = "..."
+	var res:String = ""
 	match input_event.get_class():
 		"InputEventKey":
 			res = input_event.as_text_physical_keycode()

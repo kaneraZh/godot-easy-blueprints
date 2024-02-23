@@ -7,7 +7,7 @@ func set_slider(v:HSlider)->void:
 	slider = v
 	slider.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	slider.set_v_size_flags(Control.SIZE_FILL)
-	slider.set_stretch_ratio(5.0)
+	slider.set_stretch_ratio(17.0)
 	add_child(slider, false, Node.INTERNAL_MODE_FRONT)
 	components_update()
 	slider_update()
@@ -18,6 +18,7 @@ func set_label(v:Label)->void:
 	label.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	label.set_v_size_flags(Control.SIZE_FILL)
 	label.set_vertical_alignment(VERTICAL_ALIGNMENT_CENTER)
+	label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_RIGHT)
 	label.set_text_overrun_behavior(TextServer.OVERRUN_TRIM_CHAR)
 	add_child(label, false, Node.INTERNAL_MODE_FRONT)
 	components_update()
@@ -79,7 +80,7 @@ func _ready():
 	super()
 	if(!slider):set_slider(HSlider.new())
 	if(!label): set_label(Label.new())
-	type = TYPE_FLOAT
+	type = TYPES_ALLOWED.TYPE_FLOAT
 	connect(&"focus_entered", Callable(self, &"_pass_focus"))
 	read()
 func _pass_focus()->void:
@@ -93,14 +94,14 @@ func check()->bool: return ProjectSettings.get_setting(setting)==get_value()
 
 func get_property_list_settings()->Array[Dictionary]:
 	var properties:Array[Dictionary] = []
-	properties.append({
-		"name": "type",
-		"class_name": "",
-		"type": TYPE_INT,
-		"hint": PROPERTY_HINT_ENUM,
-		"hint_string": TYPES,
-		"usage": PROPERTY_USAGE_SCRIPT_VARIABLE + PROPERTY_USAGE_NO_EDITOR
-	})
+	#properties.append({
+		#"name": "type",
+		#"class_name": "",
+		#"type": TYPE_INT,
+		#"hint": PROPERTY_HINT_ENUM,
+		#"hint_string": get_type(),
+		#"usage": PROPERTY_USAGE_SCRIPT_VARIABLE + PROPERTY_USAGE_NO_EDITOR
+	#})
 	properties.append({
 		"name": "default_value",
 		"class_name": "",

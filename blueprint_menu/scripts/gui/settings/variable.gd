@@ -30,8 +30,6 @@ enum TYPES_ALLOWED {
 	TYPE_COLOR,
 	TYPE_STRING_NAME,
 	TYPE_NODE_PATH,
-	TYPE_CALLABLE,
-	TYPE_SIGNAL,
 	TYPE_DICTIONARY,
 	TYPE_ARRAY,
 	TYPE_PACKED_BYTE_ARRAY,
@@ -67,8 +65,6 @@ const TYPES_ALLOWED_ARRAY:PackedInt32Array = [
 	TYPE_COLOR,
 	TYPE_STRING_NAME,
 	TYPE_NODE_PATH,
-	TYPE_CALLABLE,
-	TYPE_SIGNAL,
 	TYPE_DICTIONARY,
 	TYPE_ARRAY,
 	TYPE_PACKED_BYTE_ARRAY,
@@ -189,4 +185,4 @@ func _ready()->void:
 	if(!ProjectSettings.has_setting(setting) ):
 		ProjectSettings.set_setting(setting, default_value)
 	ProjectSettings.set_initial_value(setting, default_value)
-	add_to_group(get_parent().get_parent().get_name())
+	add_to_group(get_parent().get_parent().get_parent().get_name())
