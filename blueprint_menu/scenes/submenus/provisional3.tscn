@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bokn3u1ovckpl"]
+
+[ext_resource type="Script" path="res://scripts/gui/menu.gd" id="1_yn7et"]
+[ext_resource type="Script" path="res://scripts/gui/buttons/button.gd" id="2_yxwnl"]
+[ext_resource type="VisualShaderNodeTransformVecMult" uid="uid://cslypcpchbawx" path="res://resources/provisional/new_visual_shader_node_transform_vec_mult.tres" id="3_un41w"]
+
+[node name="submenu3" type="VBoxContainer" node_paths=PackedStringArray("main_focus")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yn7et")
+main_focus = NodePath("back")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "you are now in the submenu 3"
+
+[node name="item3" type="Button" parent="."]
+layout_mode = 2
+text = "select item 3"
+alignment = 2
+script = ExtResource("2_yxwnl")
+mode = 3
+generic_resource = ExtResource("3_un41w")
+
+[node name="back" type="Button" parent="."]
+layout_mode = 2
+text = "guess what this button does"
+alignment = 0
+script = ExtResource("2_yxwnl")

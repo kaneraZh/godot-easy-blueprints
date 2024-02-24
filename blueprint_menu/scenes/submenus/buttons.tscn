@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://cguh3e3pg7vmq"]
+
+[ext_resource type="Script" path="res://scripts/gui/menu.gd" id="1_ilokm"]
+[ext_resource type="Script" path="res://scripts/gui/buttons/button.gd" id="2_m66sq"]
+[ext_resource type="PackedScene" uid="uid://chyulf6qfcd4y" path="res://scenes/submenus/provisional0.tscn" id="3_2pof2"]
+
+[node name="UiMenu" type="VBoxContainer" node_paths=PackedStringArray("main_focus")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ilokm")
+main_focus = NodePath("UiButton6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Button demostration menu"
+
+[node name="UiButton6" type="Button" parent="."]
+layout_mode = 2
+text = "menu mode - loads the especified menu scene, in this case demo0"
+alignment = 0
+script = ExtResource("2_m66sq")
+mode = 1
+generic_resource = ExtResource("3_2pof2")
+
+[node name="UiButton2" type="Button" parent="."]
+layout_mode = 2
+text = "folder - a way to navigate through a folder, it emits resources, loads packed scenes as a main scene, and opens folders"
+alignment = 0
+script = ExtResource("2_m66sq")
+mode = 4
+folder_directory = ""
+
+[node name="UiButton3" type="Button" parent="."]
+layout_mode = 2
+text = "emit a resource - this emits an assigned resource attatched to the selected signal"
+alignment = 0
+script = ExtResource("2_m66sq")
+mode = 3
+generic_resource = null
+
+[node name="UiButton4" type="Button" parent="."]
+layout_mode = 2
+text = "scene - changes the scene to the packed scene provided"
+alignment = 0
+script = ExtResource("2_m66sq")
+mode = 2
+generic_resource = null
+
+[node name="UiButton5" type="Button" parent="."]
+layout_mode = 2
+text = "method - executes a method on the selected node, the menu_root or the scene_tree, its easy to implement more nodes if necessary"
+alignment = 0
+script = ExtResource("2_m66sq")
+mode = 5
+method_class = 1
+method_method = &""
+
+[node name="UiButton7" type="Button" parent="."]
+layout_mode = 2
+text = "free - aka back, queue_free's the menu_root of this button, activating either the menu before or just eliminating the menu altogether"
+alignment = 0
+script = ExtResource("2_m66sq")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://beug7wlrjl764"]
+
+[ext_resource type="Script" path="res://scripts/gui/menu.gd" id="1_37f56"]
+[ext_resource type="Script" path="res://scripts/gui/buttons/button.gd" id="2_2nns2"]
+[ext_resource type="OccluderPolygon2D" uid="uid://bsmbms8jj8pqk" path="res://resources/provisional/new_occluder_polygon_2d.tres" id="3_ics16"]
+
+[node name="submenu2" type="VBoxContainer" node_paths=PackedStringArray("main_focus")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_37f56")
+main_focus = NodePath("back")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "this is the submenu 2 :O"
+
+[node name="item2" type="Button" parent="."]
+layout_mode = 2
+text = "select item 2"
+script = ExtResource("2_2nns2")
+mode = 3
+generic_resource = ExtResource("3_ics16")
+
+[node name="back" type="Button" parent="."]
+layout_mode = 2
+text = "Go Back"
+alignment = 0
+script = ExtResource("2_2nns2")

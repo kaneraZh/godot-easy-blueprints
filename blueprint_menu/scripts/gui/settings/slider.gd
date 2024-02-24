@@ -7,7 +7,7 @@ func set_slider(v:HSlider)->void:
 	slider = v
 	slider.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	slider.set_v_size_flags(Control.SIZE_FILL)
-	slider.set_stretch_ratio(17.0)
+	slider.set_stretch_ratio(15.0)
 	add_child(slider, false, Node.INTERNAL_MODE_FRONT)
 	components_update()
 	slider_update()
@@ -18,7 +18,7 @@ func set_label(v:Label)->void:
 	label.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	label.set_v_size_flags(Control.SIZE_FILL)
 	label.set_vertical_alignment(VERTICAL_ALIGNMENT_CENTER)
-	label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_RIGHT)
+	label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_LEFT)
 	label.set_text_overrun_behavior(TextServer.OVERRUN_TRIM_CHAR)
 	add_child(label, false, Node.INTERNAL_MODE_FRONT)
 	components_update()

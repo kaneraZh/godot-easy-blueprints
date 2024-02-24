@@ -19,7 +19,7 @@ func _ready():
 	var container:VBoxContainer = VBoxContainer.new()
 	container.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	scroll.add_child(container)
-	
+	# SETS FILES AND FOLDERS, RESPECTIVELY
 	var button=func(name:String)->UiButton:
 		var res:UiButton = UiButton.new()
 		res.set_name(name)
@@ -45,5 +45,4 @@ func _ready():
 	btn.set_mode(UiButton.MODE.FREE)
 	container.add_child(btn)
 	main_focus = container.get_child(0, true)
-	
 	super()

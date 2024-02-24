@@ -12,6 +12,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6njrf")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Label demostration menu"
+
 [node name="UiButton" type="Button" parent="."]
 layout_mode = 2
 text = "Go back if... - assert popup; if the method is false, it asks for confirmation to do the buttons action, otherwise just acts"
@@ -20,7 +24,7 @@ script = ExtResource("2_lbmad")
 options = 3
 popup_mode = 1
 popup_scene = null
-popup_assert = null
+popup_assert = &""
 popup_text = "This node has no unique name, you sure you wanna go back? (silly example, this mode is better shown in the \"settings\" menu buttons at the bottom)"
 
 [node name="UiButton2" type="Button" parent="."]

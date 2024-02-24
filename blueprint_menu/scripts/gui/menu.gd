@@ -25,6 +25,8 @@ func _ready():
 		find_child( get_path_step() ).call_deferred(&'_on_press')
 	else:
 		main_focus.grab_focus()
+func _selection_repeater(selection:Resource)->void:
+	emit_signal(&"selected", selection)
 
 var focus_control:FocusInheritanceController : set=set_focus_control
 func set_focus_control(v:FocusInheritanceController)->void:
@@ -36,8 +38,8 @@ func add_menu(menu:UiMenu)->void:
 		menu.set_path( path.lstrip('%s/'%get_path_step()) )
 		path = ""
 	menu.connect(&"tree_exiting", Callable(self, &"set_visible").bind(true), CONNECT_DEFERRED)
+	menu.connect(&"selected", Callable(self, &"_selection_repeater"), CONNECT_DEFERRED)
 	add_sibling(menu)
-	#menu.call_deferred(&"grab_focus")
 func add_popup(menu:Control)->void:
 	add_sibling(menu)
 	focus_control.set_mode_branches(Control.FOCUS_NONE)

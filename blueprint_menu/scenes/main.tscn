@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp4demy7bhhkl"]
+[gd_scene load_steps=10 format=3 uid="uid://dp4demy7bhhkl"]
 
 [ext_resource type="Theme" uid="uid://bf560c857m1ar" path="res://resources/themes/main.tres" id="1_c6v58"]
 [ext_resource type="Script" path="res://scripts/gui/menu.gd" id="2_45hgg"]
 [ext_resource type="Script" path="res://scripts/gui/buttons/button.gd" id="3_qn3jb"]
 [ext_resource type="PackedScene" uid="uid://dp5wtv7krec" path="res://scenes/popups/yes_no.tscn" id="4_b3x0b"]
+[ext_resource type="PackedScene" uid="uid://cguh3e3pg7vmq" path="res://scenes/submenus/buttons.tscn" id="4_tn3ba"]
 [ext_resource type="PackedScene" uid="uid://dar8hf8p8a7y6" path="res://scenes/submenus/settings.tscn" id="4_v275n"]
+[ext_resource type="PackedScene" uid="uid://dm0hlmi3aien0" path="res://scenes/submenus/popups.tscn" id="5_xh7bc"]
+[ext_resource type="PackedScene" uid="uid://d2ito8nipshdw" path="res://scenes/submenus/menus.tscn" id="6_lak4y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8qcor"]
 font_size = 50
@@ -27,30 +30,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_45hgg")
 path = "settings/"
-main_focus = NodePath("menus")
+main_focus = NodePath("buttons")
 
 [node name="Label" type="Label" parent="UiMenu"]
 layout_mode = 2
 text = "Demos Menu"
 label_settings = SubResource("LabelSettings_8qcor")
 
-[node name="menus" type="Button" parent="UiMenu"]
+[node name="buttons" type="Button" parent="UiMenu"]
 editor_description = "skdjnksjdnfkjsdkfn"
 layout_mode = 2
-text = "Menu demostration"
+text = "Buttons demostration"
 alignment = 0
 script = ExtResource("3_qn3jb")
 mode = 1
-generic_resource = null
+generic_resource = ExtResource("4_tn3ba")
 
-[node name="menus2" type="Button" parent="UiMenu"]
+[node name="popups" type="Button" parent="UiMenu"]
 editor_description = "skdjnksjdnfkjsdkfn"
+layout_mode = 2
+text = "Popups demostration"
+alignment = 0
+script = ExtResource("3_qn3jb")
+mode = 1
+generic_resource = ExtResource("5_xh7bc")
+
+[node name="menus" type="Button" parent="UiMenu"]
 layout_mode = 2
 text = "Menu demostration"
 alignment = 0
 script = ExtResource("3_qn3jb")
 mode = 1
-generic_resource = null
+generic_resource = ExtResource("6_lak4y")
 
 [node name="settings" type="Button" parent="UiMenu"]
 layout_mode = 2

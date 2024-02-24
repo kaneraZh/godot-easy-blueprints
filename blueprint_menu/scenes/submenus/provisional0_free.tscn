@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl4vss2ovpd0m"]
+
+[ext_resource type="Script" path="res://scripts/gui/menu.gd" id="1_1ppr3"]
+[ext_resource type="Script" path="res://scripts/gui/buttons/button.gd" id="2_84uc2"]
+[ext_resource type="PackedScene" uid="uid://d22gdqqg2ogxw" path="res://scenes/submenus/provisional1.tscn" id="3_e1d5m"]
+[ext_resource type="PackedScene" uid="uid://beug7wlrjl764" path="res://scenes/submenus/provisional2.tscn" id="4_yi114"]
+[ext_resource type="PackedScene" uid="uid://bokn3u1ovckpl" path="res://scenes/submenus/provisional3.tscn" id="5_gl7f3"]
+[ext_resource type="Shape3D" uid="uid://dh7662hf8me74" path="res://resources/provisional/new_height_map_shape_3d.tres" id="6_e6745"]
+
+[node name="UiMenu" type="VBoxContainer" node_paths=PackedStringArray("main_focus")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ppr3")
+free_on_select = true
+main_focus = NodePath("prov1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "demo menu 1 - 0"
+
+[node name="prov1" type="Button" parent="."]
+layout_mode = 2
+text = "go to submenu 1"
+alignment = 0
+script = ExtResource("2_84uc2")
+mode = 1
+generic_resource = ExtResource("3_e1d5m")
+
+[node name="prov2" type="Button" parent="."]
+layout_mode = 2
+text = "go to submenu 2"
+alignment = 0
+script = ExtResource("2_84uc2")
+mode = 1
+generic_resource = ExtResource("4_yi114")
+
+[node name="prov3" type="Button" parent="."]
+layout_mode = 2
+text = "go to submenu 3"
+alignment = 0
+script = ExtResource("2_84uc2")
+mode = 1
+generic_resource = ExtResource("5_gl7f3")
+
+[node name="item0" type="Button" parent="."]
+layout_mode = 2
+text = "select item 0"
+alignment = 0
+script = ExtResource("2_84uc2")
+mode = 3
+generic_resource = ExtResource("6_e6745")
+
+[node name="back" type="Button" parent="."]
+layout_mode = 2
+text = "back"
+alignment = 0
+script = ExtResource("2_84uc2")

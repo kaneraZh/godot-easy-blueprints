@@ -1,7 +1,14 @@
 @tool
 extends EditorScript
 
-enum  FART{A,B,C}
+class test:
+	signal fard
+	func emit()->void: emit_signal(&"fard", 19)
+
+func printer(a, b):
+	print(a," - ", b)
+
 func _run()->void:
-	for t in FART:
-		print(','.join(FART.keys()))
+	var t:test = test.new()
+	t.connect(&"fard", Callable(self, &"printer").bind(99))
+	t.emit()
