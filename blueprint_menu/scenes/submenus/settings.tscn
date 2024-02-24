@@ -188,7 +188,6 @@ vertical_alignment = 1
 layout_mode = 2
 script = ExtResource("2_medbl")
 items = Array[ExtResource("3_wk08e")]([SubResource("Resource_fp6gf"), SubResource("Resource_ybdl5"), SubResource("Resource_hj53y")])
-selected = 2
 setting = "custom/settings/options/vector2"
 type = 4
 default_value = Vector2(0, -1)

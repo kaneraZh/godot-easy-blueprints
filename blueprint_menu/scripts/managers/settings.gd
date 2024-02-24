@@ -151,5 +151,7 @@ static func reset_game()->void:
 	)
 
 func _init()->void:
+	if( DirAccess.dir_exists_absolute("res://settings.cfg")):
+		_load_project_settings("res://settings.cfg")
 	@warning_ignore("static_called_on_instance")
 	load_settings()

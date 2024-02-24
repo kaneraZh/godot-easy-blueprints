@@ -35,7 +35,7 @@ folder_directory = ""
 
 [node name="UiButton3" type="Button" parent="."]
 layout_mode = 2
-text = "emit a resource - this emits an assigned resource attatched to the selected signal"
+text = "emit a resource - this emits an assigned resource attatched to the selected signal, it can be whatever as long as its a resource"
 alignment = 0
 script = ExtResource("2_m66sq")
 mode = 3
@@ -43,7 +43,7 @@ generic_resource = null
 
 [node name="UiButton4" type="Button" parent="."]
 layout_mode = 2
-text = "scene - changes the scene to the packed scene provided"
+text = "scene - changes the main scene to the packed scene provided"
 alignment = 0
 script = ExtResource("2_m66sq")
 mode = 2

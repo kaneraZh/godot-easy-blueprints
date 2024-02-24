@@ -19,6 +19,10 @@ config/icon="res://icon.png"
 
 ManagerSettings="*res://scripts/managers/settings.gd"
 
+[custom]
+
+demo/=11.965
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
