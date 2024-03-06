@@ -144,7 +144,7 @@ active = 1
 
 [sub_resource type="Resource" id="Resource_hlakl"]
 script = ExtResource("10_yqfpy")
-value = -64.286
+value = 0.0
 ingnore_further_than = 180.0
 allow_from_neutral = false
 settings = 1

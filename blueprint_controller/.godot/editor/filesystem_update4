@@ -1,2 +1,9 @@
 res://default_env.tres
 res://demo.tscn
+res://controller_classes/threshold/threshold_angle.gd
+res://controller_classes/threshold/threshold.gd
+res://controller_classes/threshold/threshold_abs.gd
+res://controller_classes/threshold/threshold_circle.gd
+res://controller_classes/threshold/threshold_normal.gd
+res://controller_classes/input_mouse.gd
+res://demo.gd

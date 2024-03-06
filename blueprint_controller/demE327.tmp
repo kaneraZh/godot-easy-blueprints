@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c5smsjg2sds20"]
+[gd_scene load_steps=29 format=3 uid="uid://c5smsjg2sds20"]
 
 [ext_resource type="Script" path="res://demo.gd" id="1"]
 [ext_resource type="Script" path="res://controller_classes/controller.gd" id="2"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://controller_classes/analog/analog.gd" id="4_wjiro"]
 [ext_resource type="Script" path="res://controller_classes/analog/analog1d.gd" id="5_x24j0"]
 [ext_resource type="Script" path="res://controller_classes/input_mouse.gd" id="9_svo01"]
-[ext_resource type="Script" path="res://controller_classes/threshold/threshold_angle.gd" id="10_yqfpy"]
 
 [sub_resource type="Resource" id="Resource_h2867"]
 script = ExtResource("2_g8i88")
@@ -142,17 +141,10 @@ signals = 0
 name = &"pad"
 active = 1
 
-[sub_resource type="Resource" id="Resource_hlakl"]
-script = ExtResource("10_yqfpy")
-value = -64.286
-ingnore_further_than = 180.0
-allow_from_neutral = false
-settings = 1
-
 [sub_resource type="Resource" id="Resource_2p23n"]
 script = ExtResource("9_svo01")
 active = 1
-thresholds = Array[Resource("res://controller_classes/threshold/threshold.gd")]([SubResource("Resource_hlakl")])
+thresholds = Array[ExtResource("4_j4e7n")]([])
 cursor_mode = 13
 
 [node name="demo" type="Node2D"]
@@ -161,6 +153,7 @@ pause = SubResource("Resource_h2867")
 stick = SubResource("Resource_slrbs")
 pad = SubResource("Resource_adytd")
 mouse = SubResource("Resource_2p23n")
+pos_mouse = Vector2i(100, 100)
 
 [node name="Controller" type="Node" parent="."]
 script = ExtResource("2")
