@@ -27,7 +27,7 @@ generic_resource = ExtResource("3_2pof2")
 
 [node name="UiButton2" type="Button" parent="."]
 layout_mode = 2
-text = "folder - a way to navigate through a folder, it emits resources, loads packed scenes as a main scene, and opens folders"
+text = "folder - a way to navigate through a folder, it emits resources, loads packed scenes as a main scene, and opens folders (meant to be used for testing)"
 alignment = 0
 script = ExtResource("2_m66sq")
 mode = 4

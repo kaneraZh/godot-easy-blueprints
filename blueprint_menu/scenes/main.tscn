@@ -52,7 +52,7 @@ layout_mode = 2
 text = "Popups demostration"
 alignment = 0
 script = ExtResource("3_qn3jb")
-mode = 1
+mode = 2
 generic_resource = ExtResource("5_xh7bc")
 
 [node name="menus" type="Button" parent="UiMenu"]
